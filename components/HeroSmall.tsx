@@ -1,7 +1,7 @@
 const HeroSmall = () => {
   return (
-    <div className="flex flex-col justify-center  items-start gap-10 ">
-      <p className=" text-lg text-white ">
+    <div className="flex flex-col justify-center  items-start gap-9 ">
+      <p className=" text-sm text-gray-500 ">
         Edward Cahyadi - Software Developer
       </p>
       <h1 className="text-6xl">

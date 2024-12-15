@@ -5,7 +5,7 @@ import { useState } from "react";
 const Slide = () => {
   const [choose, setChoose] = useState(false);
   const change = () => {
-    choose ? setChoose(false) : setChoose(true);
+    setChoose(!choose);
   };
   return (
     <div className="flex sticky w-auto h-auto bg-dark_grey px-3 py-2 rounded-full text-sm border-[#363636] border-[1.8px] ">

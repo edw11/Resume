@@ -3,11 +3,8 @@ import Image from "next/image";
 import { useState } from "react";
 import HeroSmall from "./HeroSmall";
 import HeroBig from "./HeroBig";
-import HeroLarge from "./HeroLarge";
 
 const Hero = () => {
-  const [loop, setLoop] = useState(true);
-
   return (
     <div>
       <div className="absolute inset-0 bg-gradient-to-b from-white/3 max-sm:from-white/10 to-black z-[-1] ">

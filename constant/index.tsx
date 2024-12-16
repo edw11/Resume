@@ -6,7 +6,7 @@ export const project = [
     bigTitle: "Stadia Bluetooth",
     title: "Google,'23",
     description: "Giving a second life to over a million controllers",
-    colorStart: "exoticBlue",
+    colorStart: "#184969",
     colorEnd: "black",
   },
 ];

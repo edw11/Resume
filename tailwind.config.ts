@@ -24,8 +24,10 @@ export default {
       },
       backgroundImage: {
         navbar: "url('/images/noise.png')",
+
         "custom-radial-gradient":
           "radial-gradient(circle farthest-side at 50% 0, #f2f2f233, #0000)",
+        "custom-gradient": "linear-gradient(to bottom, #184969, black)",
       },
       animation: {
         "bounce-color": "bounce-color 2.6s infinite",

@@ -30,3 +30,31 @@ body {
   box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
 }
 
+
+
+@media (min-width: 1280px) {
+  .grad {
+    z-index: 1;
+    position: relative;
+    --gradient-start: #184969;  /* Default color */
+    --gradient-end: black;     /* Default color */
+  }
+  
+  .grad::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--gradient-start), var(--gradient-end));
+    opacity: 0;
+    transition: opacity 0.5s;
+    z-index: -1;
+    border-radius: 0.5rem
+  }
+  
+  .grad:hover::before {
+    opacity: 1;
+  }
+}

@@ -1,10 +1,10 @@
 const HeroSmall = () => {
   return (
     <div className="flex flex-col justify-center  items-start gap-9 ">
-      <p className=" text-sm text-gray-500 ">
-        Edward Cahyadi - Software Developer
+      <p className=" text-base text-gray-300 ">
+        Edward Cahyadi — Software Developer
       </p>
-      <h1 className="text-6xl">
+      <h1 className="text-5xl">
         <span className="text-white text-shadow">
           I develop apps, interactions &
         </span>{" "}
@@ -30,7 +30,7 @@ const HeroSmall = () => {
         >
           <path d="M24 44L10 30L12.1 27.9L22.5 38.3V4H25.5V38.3L35.9 27.9L38 30L24 44Z" />
         </svg>
-        <p>Explore More</p>
+        <p className="text-grayAlt2">Explore More</p>
       </div>
     </div>
   );

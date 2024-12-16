@@ -8,9 +8,9 @@ const Slide = () => {
     setChoose(!choose);
   };
   return (
-    <div className="flex sticky w-auto h-auto bg-dark_grey px-3 py-2 rounded-full text-sm border-[#363636] border-[1.8px] ">
+    <div className="flex relative w-auto h-auto glass px-3 py-2 rounded-full text-sm border-[#363636] border-[1px]">
       <div
-        className={`bg-def w-20 h-8 absolute top-[0.6rem]  z-0 rounded-full transition-all duration-300 ${
+        className={`glass w-20 h-9 absolute top-[0.5rem]  z-0 rounded-full transition-all duration-300 ${
           choose ? "ml-[4.7rem] transition-all duration-300" : ""
         }`}
       ></div>

@@ -13,6 +13,11 @@ export default {
         foreground: "var(--foreground)",
         def: "#383838",
         dark_grey: "#1F1F1F",
+        whiteAlt: "#A1B0B9",
+        grayAlt: "#5F7B8F",
+        whiteAlt2: "#F2F2F2",
+        exoticBlue: "#184969",
+        grayAlt2: "#969494",
       },
       fontFamily: {
         title: ["Gloock", "sans-serif"],

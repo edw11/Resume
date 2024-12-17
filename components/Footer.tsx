@@ -1,18 +1,7 @@
 "use client";
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
 
 const Footer = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  // Show button when the user scrolls down
-  const toggleVisibility = () => {
-    if (window.scrollY > 300) {
-      setIsVisible(true);
-    } else {
-      setIsVisible(false);
-    }
-  };
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -20,13 +9,6 @@ const Footer = () => {
     });
   };
 
-  useEffect(() => {
-    window.addEventListener("scroll", toggleVisibility);
-
-    return () => {
-      window.removeEventListener("scroll", toggleVisibility);
-    };
-  }, []);
   return (
     <div>
       <div className="w-[100vw] h-[0.1rem] bg-def"></div>
@@ -49,9 +31,6 @@ const Footer = () => {
                 Made with love and Mango Green teas (50% sugar, less ice).
               </p>
             </div>
-            <p className="text-grayAlt3 text-custom">
-              Last Updated by Edward on December 17,2024
-            </p>
           </div>
         </div>
       </div>

@@ -30,7 +30,7 @@ const Navbar = () => {
               alt="@"
               width={22}
               height={22}
-              className={`transition-opacity duration-800 absolute ${
+              className={`transition-opacity duration-1000 absolute select-none ${
                 click ? "opacity-0 invisible" : "opacity-100 visible"
               }`}
             />
@@ -39,13 +39,13 @@ const Navbar = () => {
               alt="close"
               width={22}
               height={22}
-              className={`transition-opacity duration-800  ${
+              className={`transition-opacity duration-1000 select-none  ${
                 !click ? "opacity-0 invisible" : "opacity-100 visible"
               }`}
             />
           </div>
           <div
-            className={`absolute glass py-8 px-8 flex flex-col gap-6 rounded-xl right-0 top-[4.3rem]  transition-all duration-800 ease-in-out ${
+            className={`absolute glass py-8 px-8 flex flex-col gap-6 rounded-xl right-0 top-[4.3rem]  transition-all duration-800 ease-in-out  ${
               click
                 ? "opacity-100 translate-y-0 visible"
                 : "opacity-0 -translate-y-4 invisible"

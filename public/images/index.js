@@ -1,3 +1,4 @@
 import arrow from "./arrow.png";
 import stadia from "./stadia.png";
-export { arrow, stadia };
+import portfolio from "./portfolio.png";
+export { arrow, stadia, portfolio };

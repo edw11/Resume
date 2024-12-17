@@ -33,7 +33,7 @@ const ProjectCard = (product: data) => {
   return (
     <div className="bg-dark_grey border-white border-2 border-opacity-10 border-solid px-2 pt-2 rounded-xl mt-10">
       <div
-        className={`flex-col flex grad px-7 pt-6 rounded-lg xl:w-[65rem] gap-14 justify-evenly max-xl:bg-custom-gradient`}
+        className={`flex-col flex grad px-7 pt-6 rounded-lg xl:w-[65rem] gap-14 justify-evenly `}
         onMouseEnter={change}
         onMouseLeave={change}
         style={gradientStyles}
@@ -54,18 +54,18 @@ const ProjectCard = (product: data) => {
             height={30}
             alt="arrow"
             className={`md:w-[40px] md:h-[40px] transition-all duration-700 ${
-              isHover ? "xl:translate-x-0" : "xl:translate-x-3"
+              isHover ? "xl:translate-x-3" : "xl:translate-x-0"
             }`}
           />
         </div>
-        <div className="w-full justify-center flex overflow-hidden">
+        <div className="w-full justify-center flex overflow-hidden ">
           <Image
             src={product.imgURL}
             width={800}
-            height={700}
+            height={800}
             alt="stadia"
-            className={`transition-all duration-500  ${
-              isHover ? "xl:translate-y-8" : "xl:translate-y-0"
+            className={`transition-all duration-500 rounded-xl   ${
+              isHover ? "xl:translate-y-0" : "xl:translate-y-8"
             }`}
           ></Image>
         </div>

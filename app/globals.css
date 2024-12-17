@@ -14,8 +14,13 @@
     --foreground: #ededed;
   }
 }
+* {
+  scrollbar-width: none; /* Firefox */
+}
 
-
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
 
 body {
   color: var(--foreground);
@@ -58,3 +63,15 @@ body {
     opacity: 1;
   }
 }
+
+@media not all and (min-width: 1280px){
+  .grad{
+    background: linear-gradient(to bottom, var(--gradient-start), var(--gradient-end));
+  }
+}
+
+.text-custom{
+  font-size: 0.85rem /* 12px */;
+  line-height: 1rem /* 16px */;
+}
+

@@ -18,6 +18,7 @@ export default {
         whiteAlt2: "#F2F2F2",
         exoticBlue: "#184969",
         grayAlt2: "#969494",
+        grayAlt3: "#727272",
       },
       fontFamily: {
         title: ["Gloock", "sans-serif"],

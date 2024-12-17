@@ -5,7 +5,7 @@ import Project from "@/components/Project";
 
 export default function Home() {
   return (
-    <div>
+    <div className="overflow-hidden">
       <section className="fixed w-full z-10">
         <Navbar />
       </section>
@@ -15,7 +15,7 @@ export default function Home() {
       <section className=" flex justify-center px-3">
         <Project />
       </section>
-      <section className="px-7 py-28">
+      <section className=" pt-28 pb-14">
         <Footer />
       </section>
     </div>

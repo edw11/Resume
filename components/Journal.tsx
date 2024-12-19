@@ -30,21 +30,39 @@ const Journal = (projectData: projectData) => {
   const [isLoading, setLoading] = useState(true); // State to track loading
   // Function to handle image load
   const onImageLoad = () => {
-    setLoading(false);
+    setLoading(true); // Initially, set loading to true to display loading state
     console.log("Image loaded");
+
+    // Delay hiding the loading spinner for 2 seconds
+    setTimeout(() => {
+      setLoading(false); // Set loading to false after the delay
+    }, 500); // 2000 milliseconds = 2 seconds
   };
   return (
     <div>
       {/* Show loading until the image is loaded */}
       {isLoading && (
-        <div className="flex justify-center items-center min-h-screen bg-black absolute inset-0 z-10">
-          <p className="text-white text-xl">Loading...</p>
+        <div
+          className={`flex justify-center items-center min-h-screen bg-black absolute inset-0 z-10`}
+        >
+          <Image
+            src="/icons/loader.svg"
+            alt="loader"
+            width={24}
+            height={24}
+            className="ml-2 animate-spin"
+          />
         </div>
       )}
       <div className="p-8 bg-gradient-to-b from-white/15 to-black">
-        <Button />
-
-        <div className="flex flex-col gap-4 items-center">
+        <div className={`${isLoading ? "hidden" : ""}`}>
+          <Button />
+        </div>
+        <div
+          className={`flex flex-col gap-4 items-center ${
+            !isLoading ? "animate-slideUp" : ""
+          }`}
+        >
           <div className="flex flex-col justify-center items-center pt-14 gap-4">
             <h1 className="text-shadow text-4xl xl:text-6xl">
               {projectData.descriptionTitle}
@@ -84,7 +102,7 @@ const Journal = (projectData: projectData) => {
                   {projectData.timeline}
                 </p>
               </div>
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-3">
                 <p>Overview</p>
                 <p className="md:text-lg text-grayAlt2">
                   {projectData.Overview}
@@ -115,7 +133,7 @@ const Journal = (projectData: projectData) => {
                 <p className="text-grayAlt2">{projectData.timeline}</p>
               </div>
             </div>
-            <div className="w-[30rem] text-lg">
+            <div className="w-[30rem] text-lg ">
               <p>Overview</p>
               <p className="text-lg text-grayAlt2 ">{projectData.Overview}</p>
             </div>

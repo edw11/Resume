@@ -31,9 +31,9 @@ const page = async ({ params }: { params: Params }) => {
             </p>
           </div>
           <Image
-            src="https://cdn.prod.website-files.com/63dcb6e1a80e9454b630f4c4/648417bd66311009cc791d3a_spotlight-banner-p-800.png"
-            width={800}
-            height={800}
+            src="/images/spotlight.png"
+            width={1300}
+            height={1300}
             alt="spotlight"
             className="mt-10"
           ></Image>

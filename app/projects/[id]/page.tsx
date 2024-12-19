@@ -4,15 +4,16 @@ import DetailCard from "@/components/DetailCard";
 import Footer from "@/components/Footer";
 import { project } from "@/constant";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
-const page = async ({ params }: { params: { id: string } }) => {
-  const { id } = await params; // Destructure ID from params
+const page = ({ params }: { params: { id: string } }) => {
+  const { id } = params; // Destructure ID from params
 
   const projectData = project.find((d) => d.id === id)?.detail; // Find the project by ID
 
   if (!projectData) {
     // Handle the "Not found" case
-    return NotFoundPage();
+    return notFound();
   }
 
   return (

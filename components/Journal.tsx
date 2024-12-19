@@ -42,8 +42,8 @@ const Journal = (projectData: projectData) => {
   useEffect(() => {
     // Disable scrolling when loading
     if (isLoading) {
-      window.scrollTo(0, 0); // Scroll to top of the page
       document.body.style.overflow = "hidden";
+      window.scrollTo(0, 0); // Scroll to top of the page
     } else {
       document.body.style.overflow = "auto"; // Re-enable scrolling after loading
     }

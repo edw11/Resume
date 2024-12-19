@@ -1,4 +1,3 @@
-import NotFoundPage from "@/app/not-found";
 import Button from "@/components/Button";
 import DetailCard from "@/components/DetailCard";
 import Footer from "@/components/Footer";

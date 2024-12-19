@@ -5,7 +5,7 @@ import { project } from "@/constant";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
-const page = ({ params }: { params: { id: string } }) => {
+const page = ({ params }: { params: { id: Promise<{ id: string }> } }) => {
   const { id } = params; // Destructure ID from params
 
   const projectData = project.find((d) => d.id === id)?.detail; // Find the project by ID

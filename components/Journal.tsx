@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "@/components/Button";
 import DetailCard from "@/components/DetailCard";
 import Footer from "@/components/Footer";
@@ -36,14 +36,29 @@ const Journal = (projectData: projectData) => {
     // Delay hiding the loading spinner for 2 seconds
     setTimeout(() => {
       setLoading(false); // Set loading to false after the delay
-    }, 500); // 2000 milliseconds = 2 seconds
+    }, 1000); // 2000 milliseconds = 2 seconds
   };
+
+  useEffect(() => {
+    // Disable scrolling when loading
+    if (isLoading) {
+      document.body.style.overflow = "hidden";
+      window.scrollTo(0, 0); // Scroll to top of the page
+    } else {
+      document.body.style.overflow = "auto"; // Re-enable scrolling after loading
+    }
+
+    return () => {
+      // Clean up when component unmounts
+      document.body.style.overflow = "auto";
+    };
+  }, [isLoading]);
   return (
     <div>
       {/* Show loading until the image is loaded */}
       {isLoading && (
         <div
-          className={`flex justify-center items-center min-h-screen bg-black absolute inset-0 z-10`}
+          className={`flex justify-center items-center min-h-screen bg-black absolute inset-0 z-10  `}
         >
           <Image
             src="/icons/loader.svg"
@@ -67,7 +82,7 @@ const Journal = (projectData: projectData) => {
             <h1 className="text-shadow text-4xl xl:text-6xl">
               {projectData.descriptionTitle}
             </h1>
-            <p className="text-lg xl:text-lg text-grayAlt2">
+            <p className=" text-base xl:text-lg text-grayAlt2">
               {projectData.descriptionSmallTitle}
             </p>
           </div>
@@ -141,7 +156,7 @@ const Journal = (projectData: projectData) => {
           <DetailCard {...projectData} />
         </div>
       </div>
-      )
+
       <section className="pt-28 pb-14 relative">
         <Footer />
       </section>

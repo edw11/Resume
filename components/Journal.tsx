@@ -54,7 +54,11 @@ const Journal = (projectData: projectData) => {
           />
         </div>
       )}
-      <div className="p-8 bg-gradient-to-b from-white/15 to-black">
+      <div
+        className={`p-8 bg-gradient-to-b from-white/15 to-black ${
+          isLoading ? "hidden" : ""
+        }`}
+      >
         <div className={`${isLoading ? "hidden" : ""}`}>
           <Button />
         </div>

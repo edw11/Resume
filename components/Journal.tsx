@@ -30,14 +30,20 @@ const Journal = (projectData: projectData) => {
   const [isLoading, setLoading] = useState(true); // State to track loading
   // Function to handle image load
   const onImageLoad = () => {
-    setLoading(false);
+    setLoading(true); // Initially, set loading to true to display loading state
+    console.log("Image loaded");
+
+    // Delay hiding the loading spinner for 2 seconds
+    setTimeout(() => {
+      setLoading(false); // Set loading to false after the delay
+    }, 200); // 2000 milliseconds = 2 seconds
   };
 
   useEffect(() => {
     // Disable scrolling when loading
     if (isLoading) {
-      document.body.style.overflow = "hidden";
       window.scrollTo(0, 0); // Scroll to top of the page
+      document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto"; // Re-enable scrolling after loading
     }

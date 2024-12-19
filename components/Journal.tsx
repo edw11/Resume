@@ -35,7 +35,6 @@ const Journal = (projectData: projectData) => {
 
     // Delay hiding the loading spinner for 2 seconds
     setTimeout(() => {
-      setLoading(true);
       setLoading(false); // Set loading to false after the delay
     }, 1000); // 2000 milliseconds = 2 seconds
   };

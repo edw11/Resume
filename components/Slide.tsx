@@ -14,36 +14,32 @@ const Slide = () => {
           choose ? "ml-[4.7rem] transition-all duration-300" : ""
         }`}
       ></div>
-      <div
-        className=" text-white text-center px-6 py-2 rounded-2xl z-10"
-        onClick={
-          !choose
-            ? () => {
-                setChoose(false);
-              }
-            : change
-        }
-      >
+      <div className=" text-white text-center px-6 py-2 rounded-2xl z-10">
         <Link
           href="/"
           className={` text-sm text-white ${!choose ? "text-shadow" : ""} `}
+          onClick={
+            !choose
+              ? () => {
+                  setChoose(false);
+                }
+              : change
+          }
         >
           Work
         </Link>
       </div>
-      <div
-        className=" text-white  text-center px-6 py-2 rounded-2xl z-10"
-        onClick={
-          choose
-            ? () => {
-                setChoose(true);
-              }
-            : change
-        }
-      >
+      <div className=" text-white  text-center px-6 py-2 rounded-2xl z-10">
         <Link
-          href="/"
+          href="/info"
           className={` text-sm text-white ${choose ? "text-shadow" : ""} `}
+          onClick={
+            choose
+              ? () => {
+                  setChoose(true);
+                }
+              : change
+          }
         >
           Info
         </Link>

@@ -4,9 +4,10 @@ import Footer from "@/components/Footer";
 import { project } from "@/constant";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+type Params = Promise<{ id: string }>;
 
-const page = ({ params }: { params: { id: Promise<{ id: string }> } }) => {
-  const { id } = params; // Destructure ID from params
+const page = async ({ params }: { params: Params }) => {
+  const { id } = await params; // Destructure ID from params
 
   const projectData = project.find((d) => d.id === id)?.detail; // Find the project by ID
 

@@ -16,8 +16,8 @@ const page = () => {
               <p>About Me</p>
             </div>
             <p className="text-4xl md:text-5xl text-shadow min-w-[20rem] max-w-[65rem]">
-              I'm passionate about creating beautiful products that empower
-              people.
+              I&apos; m passionate about creating beautiful products that
+              empower people.
             </p>
           </div>
           <InfoDetails />
@@ -33,12 +33,12 @@ const page = () => {
             <div className="flex flex-col gap-3">
               <div className="flex flex-col gap-1">
                 <h1 className="text-xl">Sr. Product Designer, Core Product</h1>
-                <p>07/'23 - Present</p>
+                <p>07/&apos;23 - Present</p>
               </div>
               <p className="max-w-md">
-                I owned a product that was part of Stadia's developer suite, and
-                led design on the website for enabling Bluetooth on Stadia
-                Controllers post-sunset.
+                I owned a product that was part of Stadia&apos; s developer
+                suite, and led design on the website for enabling Bluetooth on
+                Stadia Controllers post-sunset.
               </p>
             </div>
           </div>

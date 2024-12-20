@@ -4,7 +4,7 @@ import Slide from "./Slide";
 import Link from "next/link";
 import { useState } from "react";
 
-const Navbar = () => {
+const Navbar = ({ state }: { state: boolean }) => {
   const [click, setClicked] = useState(false);
   const change = () => {
     setClicked(!click);
@@ -21,7 +21,7 @@ const Navbar = () => {
           </p>
         </div>
         <div className="flex md:gap-4 w-full md:justify-end justify-between lg:hidden ">
-          <Slide />
+          <Slide state={state} />
 
           <div className="relative">
             <div
@@ -77,7 +77,7 @@ const Navbar = () => {
         </div>
 
         <div className="max-lg:hidden">
-          <Slide />
+          <Slide state={state} />
         </div>
 
         <div className="flex gap-5 text-sm max-lg:hidden">

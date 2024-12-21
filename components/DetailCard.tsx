@@ -66,7 +66,7 @@ const DetailCard = (props: data) => {
           key={index}
           className="flex flex-col items-start mt-20 border-t-2 border-grayAlt3 gap-5 md:gap-14 xl:w-[70rem]"
         >
-          <div className="flex flex-col gap-10">
+          <div className="flex flex-col gap-5 md:gap-10">
             <div className="flex items-center gap-3 mt-10 md:mt-20">
               <div className="w-3 h-3 rounded-full bg-white blur-[1px]"></div>
               <p className="text-xs text-grayAlt2 md:text-sm">
@@ -77,7 +77,7 @@ const DetailCard = (props: data) => {
           </div>
 
           <div className="flex justify-center items-start max-md:flex-col max-md:gap-5">
-            <h2 className="text-2xl w-full">
+            <h2 className="text-xl md:text-2xl w-full">
               {explanation.explanationSubTitle}
             </h2>
             <p className="text-grayAlt2 text-sm xl:text-xl ">

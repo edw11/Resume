@@ -96,13 +96,13 @@ const Journal = (projectData: projectData) => {
           </div>
           <Image
             src={projectData.imgMain}
-            width={1300}
-            height={1300}
-            alt="spotlight"
-            className="mt-10"
+            width={1200}
+            height={1200}
+            alt="image"
+            className="mt-10 "
             onLoad={onImageLoad}
           ></Image>
-          <div className="flex justify-center items-center min-[1001px]:hidden">
+          <div className="flex px-4 justify-center items-center min-[1001px]:hidden">
             <div className="flex flex-col gap-8 justify-center items-start">
               <div className="flex flex-col gap-2">
                 <p>My Role</p>

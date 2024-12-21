@@ -25,7 +25,7 @@ type data = {
 const DetailCard = (props: data) => {
   return (
     <div className="flex flex-col justify-center items-center">
-      <div className="bg-dark_grey max-w-[80rem] border-white border-2 border-opacity-10 border-solid px-2 pt-2 rounded-2xl mt-24">
+      <div className="bg-dark_grey w-full border-white border-2 border-opacity-10 border-solid px-2 pt-2 rounded-2xl mt-24">
         <div
           className={`flex-col flex px-4 md:px-7 pt-6 rounded-lg gap-5 md:gap-14 `}
         >
@@ -62,40 +62,39 @@ const DetailCard = (props: data) => {
         </div>
       </div>
       {props.explanation.map((explanation, index) => (
-        <div
-          key={index}
-          className="flex flex-col items-start mt-20 border-t-2 border-grayAlt3 gap-5 md:gap-14 xl:w-[70rem]"
-        >
-          <div className="flex flex-col gap-5 md:gap-10">
-            <div className="flex items-center gap-3 mt-10 md:mt-20">
-              <div className="w-3 h-3 rounded-full bg-white blur-[1px]"></div>
-              <p className="text-xs text-grayAlt2 md:text-sm">
-                {explanation.context}
+        <div key={index} className="px-4">
+          <div className="flex flex-col items-start mt-20 border-t-2 border-grayAlt3 gap-5 md:gap-14 xl:w-[70rem]">
+            <div className="flex flex-col gap-5 md:gap-10">
+              <div className="flex items-center gap-3 mt-10 md:mt-20">
+                <div className="w-3 h-3 rounded-full bg-white blur-[1px]"></div>
+                <p className="text-xs text-grayAlt2 md:text-sm">
+                  {explanation.context}
+                </p>
+              </div>
+              <h1 className="text-3xl">{explanation.explanationTitle}</h1>
+            </div>
+
+            <div className="flex justify-center items-start max-md:flex-col max-md:gap-5">
+              <h2 className="text-xl md:text-2xl w-full">
+                {explanation.explanationSubTitle}
+              </h2>
+              <p className="text-grayAlt2 text-sm xl:text-xl ">
+                {explanation.explanationDetail}
               </p>
             </div>
-            <h1 className="text-3xl">{explanation.explanationTitle}</h1>
-          </div>
-
-          <div className="flex justify-center items-start max-md:flex-col max-md:gap-5">
-            <h2 className="text-xl md:text-2xl w-full">
-              {explanation.explanationSubTitle}
-            </h2>
-            <p className="text-grayAlt2 text-sm xl:text-xl ">
-              {explanation.explanationDetail}
-            </p>
-          </div>
-          <div className="flex justify-center w-full mt-6">
-            <div className="flex flex-col items-end gap-2">
-              <Image
-                src={explanation.explanationImg}
-                width={1200}
-                height={1200}
-                alt="stadia"
-                className="rounded-lg"
-              ></Image>
-              <p className="text-xs text-grayAlt2 md:text-sm">
-                {explanation.explanationImgDetail}
-              </p>
+            <div className="flex justify-center w-full mt-6">
+              <div className="flex flex-col items-end gap-2">
+                <Image
+                  src={explanation.explanationImg}
+                  width={1200}
+                  height={1200}
+                  alt="stadia"
+                  className="rounded-lg"
+                ></Image>
+                <p className="text-xs text-grayAlt2 md:text-sm">
+                  {explanation.explanationImgDetail}
+                </p>
+              </div>
             </div>
           </div>
         </div>

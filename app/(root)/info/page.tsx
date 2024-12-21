@@ -55,7 +55,7 @@ const page = () => {
                   <p>10/&apos;23 - 02/&apos;24</p>
                 </div>
                 <p className="max-w-md">
-                  i Developed strategy and roadmap for the global version of the
+                  i developed strategy and roadmap for the global version of the
                   company&apos;s healthcare app, designed wireframes, and
                   conducted comprehensive UX research to align the app with the
                   needs of international markets.

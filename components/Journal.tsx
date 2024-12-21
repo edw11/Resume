@@ -31,12 +31,7 @@ type projectData = {
 const Journal = (projectData: projectData) => {
   const [isLoading, setLoading] = useState(true); // State to track loading
   // Function to handle image load
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth", // Smooth scroll animation
-    });
-  };
+
   const onImageLoad = () => {
     setLoading(true); // Initially, set loading to true to display loading state
     console.log("Image loaded");

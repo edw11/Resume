@@ -2,9 +2,14 @@
 import InfoDetails from "@/components/InfoDetails";
 import Navbar from "@/components/Navbar";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const page = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  useEffect(() => {
+    // Set `isLoaded` to true after the component mounts
+    setIsLoaded(true);
+  }, []); // The empty dependency array ensures this runs only once
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -13,11 +18,15 @@ const page = () => {
   };
   return (
     <div>
-      <div className="inset-0 bg-gradient-to-b from-white/10 max-md:from-white/10 to-black  ">
+      <div className="inset-0 bg-gradient-to-b from-white/10 max-md:from-white/10 to-black">
         <section className="fixed w-full z-10">
           <Navbar state={true} />
         </section>
-        <div className="pt-28 flex flex-col w-full items-center justify-center px-9">
+        <div
+          className={`pt-28 flex flex-col w-full items-center justify-center px-9 ${
+            isLoaded ? "animate-slideUp" : ""
+          }`}
+        >
           <div className="flex flex-col gap-8 justify-center items-center">
             <div className="flex flex-col gap-4">
               <div className="flex items-center justify-start w-full gap-3">

@@ -7,8 +7,8 @@ export const project = [
     bigTitle: "Nike Clone Website",
     title: "Side Project",
     description: "Giving a new look to Nike official website.",
-    colorStart: "purple",
-    colorEnd: "white",
+    colorStart: "#3C265D",
+    colorEnd: "black",
     detail: {
       imgMain: nike,
       descriptionTitle: "Nike Clone",

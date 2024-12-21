@@ -72,7 +72,7 @@ const Journal = (projectData: projectData) => {
           />
         </div>
       )}
-      <div className="px-2 py-5 sm:p-8 bg-gradient-to-b from-white/15 to-black">
+      <div className="px-2 py-5 sm:p-8 bg-gradient-to-b from-white/10 via-black to-black">
         <div className={`${isLoading ? "hidden" : ""}`}>
           <Button />
         </div>

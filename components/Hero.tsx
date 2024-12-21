@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import HeroSmall from "./HeroSmall";
 import HeroBig from "./HeroBig";

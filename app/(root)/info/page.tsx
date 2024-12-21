@@ -1,9 +1,16 @@
+"use client";
 import InfoDetails from "@/components/InfoDetails";
 import Navbar from "@/components/Navbar";
 import Link from "next/link";
 import React from "react";
 
 const page = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // Smooth scroll animation
+    });
+  };
   return (
     <div>
       <div className="inset-0 bg-gradient-to-b from-white/10 max-md:from-white/10 to-black  ">
@@ -83,7 +90,9 @@ const page = () => {
                   >
                     LinkedIn
                   </Link>
-                  <Link href="/">Info</Link>
+                  <button className="flex" onClick={scrollToTop}>
+                    Info
+                  </button>
                   <Link
                     href="https://drive.google.com/file/d/1nMY-231EWsDOCURxFRXZ7790kWww5dmB/view?usp=sharing"
                     target="_blank"

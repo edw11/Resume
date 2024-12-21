@@ -172,9 +172,9 @@ const Journal = (projectData: projectData) => {
               <div className="grid grid-rows-3 grid-cols-2 gap-y-7 gap-x-16 w-full max-w-md  ">
                 <h1 className="text-sm text-grayAlt3 ">Main</h1>
                 <h1 className="text-sm text-grayAlt3">Contact</h1>
-                <button className="flex" onClick={scrollToTop}>
+                <Link className="flex" href="/">
                   Work
-                </button>
+                </Link>
                 <Link
                   href="https://www.linkedin.com/in/edward-cahyadi11/"
                   target="_blank"

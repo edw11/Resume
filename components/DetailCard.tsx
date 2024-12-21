@@ -64,10 +64,10 @@ const DetailCard = (props: data) => {
       {props.explanation.map((explanation, index) => (
         <div
           key={index}
-          className="flex flex-col items-start mt-20 border-t-2 border-grayAlt3 gap-14 xl:w-[70rem]"
+          className="flex flex-col items-start mt-20 border-t-2 border-grayAlt3 gap-5 md:gap-14 xl:w-[70rem]"
         >
           <div className="flex flex-col gap-10">
-            <div className="flex items-center gap-3 mt-20">
+            <div className="flex items-center gap-3 mt-10 md:mt-20">
               <div className="w-3 h-3 rounded-full bg-white blur-[1px]"></div>
               <p className="text-xs text-grayAlt2 md:text-sm">
                 {explanation.context}

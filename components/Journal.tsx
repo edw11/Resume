@@ -163,7 +163,7 @@ const Journal = (projectData: projectData) => {
         </div>
       </div>
 
-      <section className="pt-28 pb-14 relative">
+      <section className="pt-20 md:pt-28 pb-14 relative">
         <div className="w-[100vw] h-[0.1rem] bg-def"></div>
         <div className="flex justify-center w-full ">
           <div className="w-[69rem] px-10 ">

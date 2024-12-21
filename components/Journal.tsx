@@ -182,7 +182,7 @@ const Journal = (projectData: projectData) => {
                 >
                   LinkedIn
                 </Link>
-                <Link href="/">Info</Link>
+                <Link href="/info">Info</Link>
                 <Link
                   href="https://drive.google.com/file/d/1nMY-231EWsDOCURxFRXZ7790kWww5dmB/view?usp=sharing"
                   target="_blank"

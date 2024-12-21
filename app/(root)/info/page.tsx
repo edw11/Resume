@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-const page = () => {
+const Page = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     // Set `isLoaded` to true after the component mounts
@@ -125,4 +125,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

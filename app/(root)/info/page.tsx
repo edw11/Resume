@@ -1,11 +1,38 @@
 "use client";
 import InfoDetails from "@/components/InfoDetails";
 import Navbar from "@/components/Navbar";
+import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const Page = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoading, setLoading] = useState(true); // State to track loading
+  const onImageLoad = () => {
+    setLoading(true); // Initially, set loading to true to display loading state
+    console.log("Image loaded");
+
+    // Delay hiding the loading spinner for 2 seconds
+    setTimeout(() => {
+      setLoading(false); // Set loading to false after the delay
+    }, 200); // 2000 milliseconds = 2 seconds
+  };
+
+  useEffect(() => {
+    // Disable scrolling when loading
+    if (isLoading) {
+      document.body.style.overflow = "hidden";
+      window.scrollTo(0, 0); // Scroll to top of the page
+    } else {
+      document.body.style.overflow = "auto"; // Re-enable scrolling after loading
+    }
+
+    return () => {
+      // Clean up when component unmounts
+      document.body.style.overflow = "auto";
+    };
+  }, [isLoading]);
+
   useEffect(() => {
     // Set `isLoaded` to true after the component mounts
     setIsLoaded(true);
@@ -16,8 +43,22 @@ const Page = () => {
       behavior: "smooth", // Smooth scroll animation
     });
   };
+
   return (
     <div>
+      {isLoading && (
+        <div
+          className={`flex justify-center items-center min-h-screen bg-black absolute inset-0 z-10  `}
+        >
+          <Image
+            src="/icons/loader.svg"
+            alt="loader"
+            width={24}
+            height={24}
+            className="ml-2 animate-spin"
+          />
+        </div>
+      )}
       <div className="inset-0 bg-gradient-to-b from-white/10 max-md:from-white/10 to-black">
         <section className="fixed w-full z-10">
           <Navbar state={true} />
@@ -38,7 +79,7 @@ const Page = () => {
                 empower people.
               </p>
             </div>
-            <InfoDetails />
+            <InfoDetails onImageLoad={onImageLoad} />
 
             <div className="flex flex-col items-start w-full mt-20 border-t-2 border-grayAlt3  xl:w-[70rem]">
               <div className="flex items-center gap-3 mt-12">

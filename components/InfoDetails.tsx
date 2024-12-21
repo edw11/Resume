@@ -1,7 +1,11 @@
 import Image from "next/image";
 import React from "react";
 
-const InfoDetails = () => {
+interface InfoDetailsProps {
+  onImageLoad?: () => void; // The prop is optional and is a function with no arguments and no return value
+}
+
+const InfoDetails: React.FC<InfoDetailsProps> = ({ onImageLoad }) => {
   return (
     <div>
       <div className="flex  w-full gap-10 mt-10 max-md:hidden">
@@ -13,6 +17,7 @@ const InfoDetails = () => {
               height={500}
               alt="view"
               className="rounded-md"
+              onLoad={onImageLoad}
             ></Image>
           </div>
           <div className="flex flex-col gap-5">

@@ -26,7 +26,9 @@ const DetailCard = (props: data) => {
   return (
     <div className="flex flex-col justify-center items-center">
       <div className="bg-dark_grey max-w-[80rem] border-white border-2 border-opacity-10 border-solid px-2 pt-2 rounded-2xl mt-24">
-        <div className={`flex-col flex   px-7 pt-6 rounded-lg  gap-14 `}>
+        <div
+          className={`flex-col flex px-4 md:px-7 pt-6 rounded-lg gap-5 md:gap-14 `}
+        >
           <div className="flex justify-center items-center">
             <div className="flex flex-col gap-6 items-center">
               <div className="flex flex-col gap-3 items-center">
@@ -52,7 +54,7 @@ const DetailCard = (props: data) => {
                 src={img}
                 width={1000}
                 height={1000}
-                className="mt-14"
+                className="mt-8 sm:mt-14"
                 alt="stadia"
               ></Image>
             ))}

@@ -11,7 +11,7 @@ export const project = [
     colorEnd: "white",
     detail: {
       imgMain: nike,
-      descriptionTitle: "Nike Clone Website",
+      descriptionTitle: "Nike Clone",
       link: "https://nike-website-two-opal.vercel.app/",
       descriptionSmallTitle: "Give it a visit",
       role: "Team lead",

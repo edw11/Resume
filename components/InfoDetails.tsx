@@ -41,8 +41,8 @@ const InfoDetails = () => {
               particularly drawn to the creative and technical challenges of
               creating visually appealing, interactive, and responsive web
               pages. Through working with JavaScript frameworks like React and
-              Next.js, I've come to appreciate the balance between design and
-              functionality.
+              Next.js, I&apos;ve come to appreciate the balance between design
+              and functionality.
             </p>
             <div className="p-2 bg-def rounded-md min-w-[350px] max-w-[500px]">
               <Image
@@ -99,8 +99,8 @@ const InfoDetails = () => {
               particularly drawn to the creative and technical challenges of
               creating visually appealing, interactive, and responsive web
               pages. Through working with JavaScript frameworks like React and
-              Next.js, I've come to appreciate the balance between design and
-              functionality.
+              Next.js, I&apos;ve come to appreciate the balance between design
+              and functionality.
             </p>
           </div>
         </div>

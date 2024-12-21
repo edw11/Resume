@@ -82,10 +82,22 @@ const Navbar = ({ state }: { state: boolean }) => {
 
         <div className="flex gap-5 text-sm max-lg:hidden">
           <div className="flex gap-2 hover:text-shadow">
-            <Link href={"/"}>Linkedin</Link>
+            <Link
+              href="https://www.linkedin.com/in/edward-cahyadi11/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Linkedin
+            </Link>
           </div>
           <div className="flex gap-2 hover:text-shadow">
-            <Link href={"/"}>Resume</Link>
+            <Link
+              href="https://drive.google.com/file/d/1nMY-231EWsDOCURxFRXZ7790kWww5dmB/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Resume
+            </Link>
           </div>
         </div>
       </header>

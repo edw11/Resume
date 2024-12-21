@@ -2,16 +2,18 @@
 import React, { useEffect, useState } from "react";
 import Button from "@/components/Button";
 import DetailCard from "@/components/DetailCard";
-import Footer from "@/components/Footer";
 import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
 
 type projectData = {
+  imgMain: StaticImageData;
   descriptionTitle: string;
+  link: string;
   descriptionSmallTitle: string;
   role: string;
   descriptionRole: string;
   team: string[];
-  timeline: string;
+  stacks: string;
   Overview: string;
   detailCard: string;
   titleCard: string;
@@ -29,6 +31,12 @@ type projectData = {
 const Journal = (projectData: projectData) => {
   const [isLoading, setLoading] = useState(true); // State to track loading
   // Function to handle image load
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // Smooth scroll animation
+    });
+  };
   const onImageLoad = () => {
     setLoading(true); // Initially, set loading to true to display loading state
     console.log("Image loaded");
@@ -82,12 +90,17 @@ const Journal = (projectData: projectData) => {
             <h1 className="text-shadow text-4xl xl:text-6xl">
               {projectData.descriptionTitle}
             </h1>
-            <p className=" text-base xl:text-lg text-grayAlt2">
+            <Link
+              href={projectData.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className=" text-lg xl:text-xl text-grayAlt2 hover:text-shadow hover:text-white transition-all"
+            >
               {projectData.descriptionSmallTitle}
-            </p>
+            </Link>
           </div>
           <Image
-            src="/images/spotlight.png"
+            src={projectData.imgMain}
             width={1300}
             height={1300}
             alt="spotlight"
@@ -112,10 +125,8 @@ const Journal = (projectData: projectData) => {
                 ))}
               </div>
               <div className="flex flex-col gap-2">
-                <p>Timeline & Result</p>
-                <p className="md:text-lg text-grayAlt2">
-                  {projectData.timeline}
-                </p>
+                <p>Tech stacks</p>
+                <p className="md:text-lg text-grayAlt2">{projectData.stacks}</p>
               </div>
               <div className="flex flex-col gap-3">
                 <p>Overview</p>
@@ -144,8 +155,8 @@ const Journal = (projectData: projectData) => {
                 ))}
               </div>
               <div className="text-lg">
-                <p>Timeline & Result</p>
-                <p className="text-grayAlt2">{projectData.timeline}</p>
+                <p>Tech Stacks</p>
+                <p className="text-grayAlt2">{projectData.stacks}</p>
               </div>
             </div>
             <div className="w-[30rem] text-lg ">
@@ -158,7 +169,42 @@ const Journal = (projectData: projectData) => {
       </div>
 
       <section className="pt-28 pb-14 relative">
-        <Footer />
+        <div className="w-[100vw] h-[0.1rem] bg-def"></div>
+        <div className="flex justify-center w-full ">
+          <div className="w-[69rem] px-10 ">
+            <div className="flex flex-col mt-5 gap-14 ">
+              {/* px-7 */}
+              <div className="grid grid-rows-3 grid-cols-2 gap-y-7 gap-x-16 w-full max-w-md  ">
+                <h1 className="text-sm text-grayAlt3 ">Main</h1>
+                <h1 className="text-sm text-grayAlt3">Contact</h1>
+                <button className="flex" onClick={scrollToTop}>
+                  Work
+                </button>
+                <Link
+                  href="https://www.linkedin.com/in/edward-cahyadi11/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  LinkedIn
+                </Link>
+                <Link href="/">Info</Link>
+                <Link
+                  href="https://drive.google.com/file/d/1nMY-231EWsDOCURxFRXZ7790kWww5dmB/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Resume
+                </Link>
+              </div>
+              <div className="flex flex-col gap-2 text-base">
+                <p>© 2024 Edward Cahyadi. All Rights Reserved.</p>
+                <p className="text-sm text-grayAlt3">
+                  Made with love and Mango Green teas (50% sugar, less ice).
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     </div>
   );

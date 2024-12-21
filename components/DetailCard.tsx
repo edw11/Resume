@@ -14,7 +14,7 @@ type data = {
   role: string;
   descriptionRole: string;
   team: string[];
-  timeline: string;
+  stacks: string;
   Overview: string;
   detailCard: string;
   titleCard: string;
@@ -24,11 +24,9 @@ type data = {
 
 const DetailCard = (props: data) => {
   return (
-    <div>
-      <div className="bg-dark_grey border-white border-2 border-opacity-10 border-solid px-2 pt-2 rounded-2xl mt-24">
-        <div
-          className={`flex-col flex  px-7 pt-6 rounded-lg xl:w-[70rem] gap-14 justify-evenly `}
-        >
+    <div className="flex flex-col justify-center items-center">
+      <div className="bg-dark_grey max-w-[80rem] border-white border-2 border-opacity-10 border-solid px-2 pt-2 rounded-2xl mt-24">
+        <div className={`flex-col flex   px-7 pt-6 rounded-lg  gap-14 `}>
           <div className="flex justify-center items-center">
             <div className="flex flex-col gap-6 items-center">
               <div className="flex flex-col gap-3 items-center">
@@ -41,7 +39,7 @@ const DetailCard = (props: data) => {
                 <p className="text-grayAlt2 text-base">{props.detailCard}</p>
               </div>
 
-              <p className="text-base md:text-2xl md:w-[45rem] text-whiteAlt2 text-center">
+              <p className="text-base md:text-2xl max-w-[50rem]  text-whiteAlt2 text-center">
                 {props.titleCard}
               </p>
             </div>
@@ -52,13 +50,13 @@ const DetailCard = (props: data) => {
               <Image
                 key={index}
                 src={img}
-                width={800}
-                height={800}
+                width={1000}
+                height={1000}
+                className="mt-14"
                 alt="stadia"
               ></Image>
             ))}
           </div>
-          {/* Context section */}
         </div>
       </div>
       {props.explanation.map((explanation, index) => (
@@ -77,7 +75,9 @@ const DetailCard = (props: data) => {
           </div>
 
           <div className="flex justify-center items-start max-md:flex-col max-md:gap-5">
-            <h2 className="text-2xl w-full">{explanation.explanationTitle}</h2>
+            <h2 className="text-2xl w-full">
+              {explanation.explanationSubTitle}
+            </h2>
             <p className="text-grayAlt2 text-sm xl:text-xl ">
               {explanation.explanationDetail}
             </p>
@@ -86,8 +86,8 @@ const DetailCard = (props: data) => {
             <div className="flex flex-col items-end gap-2">
               <Image
                 src={explanation.explanationImg}
-                width={1000}
-                height={1000}
+                width={1200}
+                height={1200}
                 alt="stadia"
                 className="rounded-lg"
               ></Image>

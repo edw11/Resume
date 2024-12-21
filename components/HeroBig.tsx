@@ -8,7 +8,7 @@ const HeroBig = () => {
   }, []); // The empty dependency array ensures this runs only once
   return (
     <div
-      className={`relative w-[65rem] lg:w-[55rem] xl:w-[68rem] md:w-[45rem] ${
+      className={`relative w-[65rem] lg:w-[55rem] xl:w-[69rem] md:w-[45rem]  ${
         isLoaded ? "animate-slideUp" : ""
       }`}
     >
@@ -27,10 +27,10 @@ const HeroBig = () => {
         <div className="flex flex-col gap-6 lg:gap-12 justify-center items-start lg:items-end h-full px-20 lg:px-26">
           <h1 className="text-7xl max-[900px]:text-6xl max-[768px]:text-5xl  xl:text-8xl lg:text-8xl">
             <span className="text-white text-shadow">
-              I develop apps, interactions &
+              I develop responsive apps &
             </span>{" "}
             <span className="bg-gradient-to-b italic font-title  from-white via-white to-black text-transparent bg-clip-text">
-              stories.
+              Interactive UI.
             </span>
           </h1>
           <div className="flex flex-col ">

@@ -1,4 +1,19 @@
 import arrow from "./arrow.png";
 import stadia from "./stadia.png";
 import portfolio from "./portfolio.png";
-export { arrow, stadia, portfolio };
+import nike from "./nike/nike.png";
+import nikeBanner from "./nike/nikeBanner.png";
+import products from "./nike/products.png";
+import shoes from "./nike/shoes.png";
+import tailwind from "./nike/tailwind.png";
+
+export {
+  arrow,
+  stadia,
+  portfolio,
+  nike,
+  nikeBanner,
+  products,
+  shoes,
+  tailwind,
+};

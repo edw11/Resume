@@ -71,10 +71,12 @@ const DetailCard = (props: data) => {
                   {explanation.context}
                 </p>
               </div>
-              <h1 className="text-3xl">{explanation.explanationTitle}</h1>
+              <h1 className="text-3xl text-white">
+                {explanation.explanationTitle}
+              </h1>
             </div>
 
-            <div className="flex justify-center items-start max-md:flex-col max-md:gap-5">
+            <div className="flex justify-center items-start max-md:flex-col max-md:gap-5 text-white">
               <h2 className="text-xl md:text-2xl w-full">
                 {explanation.explanationSubTitle}
               </h2>

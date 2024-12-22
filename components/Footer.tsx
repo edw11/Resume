@@ -26,10 +26,13 @@ const Footer = () => {
                 href="https://www.linkedin.com/in/edward-cahyadi11/"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="text-white"
               >
                 LinkedIn
               </Link>
-              <Link href="/info">Info</Link>
+              <Link href="/info" className="text-white">
+                Info
+              </Link>
               <Link
                 href="https://drive.google.com/file/d/1nMY-231EWsDOCURxFRXZ7790kWww5dmB/view?usp=sharing"
                 target="_blank"
@@ -39,7 +42,9 @@ const Footer = () => {
               </Link>
             </div>
             <div className="flex flex-col gap-2 text-base">
-              <p>© 2024 Edward Cahyadi. All Rights Reserved.</p>
+              <p className="text-white">
+                © 2024 Edward Cahyadi. All Rights Reserved.
+              </p>
               <p className="text-sm text-grayAlt3">
                 Made with love and Mango Green teas (50% sugar, less ice).
               </p>

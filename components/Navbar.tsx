@@ -86,6 +86,7 @@ const Navbar = ({ state }: { state: boolean }) => {
               href="https://www.linkedin.com/in/edward-cahyadi11/"
               target="_blank"
               rel="noopener noreferrer"
+              className="text-white"
             >
               Linkedin
             </Link>
@@ -95,6 +96,7 @@ const Navbar = ({ state }: { state: boolean }) => {
               href="https://drive.google.com/file/d/1nMY-231EWsDOCURxFRXZ7790kWww5dmB/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
+              className="text-white"
             >
               Resume
             </Link>

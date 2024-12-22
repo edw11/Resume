@@ -11,7 +11,7 @@ const Button = () => {
   return (
     <div className="fixed z-20">
       <Link
-        className="py-2 pr-5 pl-3 glass rounded-full flex items-center gap-3 hover:text-shadow transition-all duration-500"
+        className="py-2 pr-5 pl-3 glass rounded-full flex items-center gap-3 hover:text-shadow transition-all duration-500 text-white"
         onMouseEnter={change}
         onMouseLeave={change}
         href={"/"}

@@ -71,10 +71,10 @@ const Page = () => {
           <div className="flex flex-col gap-8 justify-center items-center">
             <div className="flex flex-col gap-4">
               <div className="flex items-center justify-start w-full gap-3">
-                <div className="w-2 h-2 rounded-full bg-white"></div>
-                <p>About Me</p>
+                <div className="w-2 h-2 rounded-full bg-white "></div>
+                <p className="text-white">About Me</p>
               </div>
-              <p className="text-4xl md:text-5xl text-shadow min-w-[20rem] max-w-[65rem]">
+              <p className="text-4xl md:text-5xl text-shadow min-w-[20rem] max-w-[65rem] text-white">
                 I&apos; m passionate about creating beautiful application that
                 empower people.
               </p>
@@ -88,7 +88,7 @@ const Page = () => {
               </div>
             </div>
 
-            <div className="flex flex-col items-start gap-3 w-full md:flex-row md:justify-between  ">
+            <div className="flex flex-col items-start gap-3 w-full md:flex-row md:justify-between text-white ">
               <h1 className="text-3xl">Hyundai Elevator</h1>
               <div className="flex flex-col gap-3">
                 <div className="flex flex-col gap-1">
@@ -103,15 +103,15 @@ const Page = () => {
               </div>
             </div>
             <div className="flex flex-col items-start gap-3 w-full md:flex-row md:justify-between mt-10  ">
-              <h1 className="text-3xl">Daewoong Pharmaceutical</h1>
+              <h1 className="text-3xl text-white">Daewoong Pharmaceutical</h1>
               <div className="flex flex-col gap-3">
                 <div className="flex flex-col gap-1">
-                  <h1 className="text-xl">
+                  <h1 className="text-xl text-white">
                     Mobile App Planning and Service Strategy
                   </h1>
                   <p>10/&apos;23 - 02/&apos;24</p>
                 </div>
-                <p className="max-w-md">
+                <p className="max-w-md text-white">
                   i developed strategy and roadmap for the global version of the
                   company&apos;s healthcare app, designed wireframes, and
                   conducted comprehensive UX research to align the app with the
@@ -132,26 +132,30 @@ const Page = () => {
                 <div className="grid grid-rows-3 grid-cols-2 gap-y-7 gap-x-16 w-full max-w-md  ">
                   <h1 className="text-sm text-grayAlt3 ">Main</h1>
                   <h1 className="text-sm text-grayAlt3">Contact</h1>
-                  <Link href="/">Work</Link>
+                  <Link href="/" className="text-white">
+                    Work
+                  </Link>
                   <Link
                     href="https://www.linkedin.com/in/edward-cahyadi11/"
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="text-white"
                   >
                     LinkedIn
                   </Link>
-                  <button className="flex" onClick={scrollToTop}>
+                  <button className="flex text-white" onClick={scrollToTop}>
                     Info
                   </button>
                   <Link
                     href="https://drive.google.com/file/d/1nMY-231EWsDOCURxFRXZ7790kWww5dmB/view?usp=sharing"
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="text-white"
                   >
                     Resume
                   </Link>
                 </div>
-                <div className="flex flex-col gap-2 text-base">
+                <div className="flex flex-col gap-2 text-base text-white">
                   <p>© 2024 Edward Cahyadi. All Rights Reserved.</p>
                   <p className="text-sm text-grayAlt3">
                     Made with love and Mango Green teas (50% sugar, less ice).

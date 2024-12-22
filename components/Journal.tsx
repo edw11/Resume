@@ -105,14 +105,14 @@ const Journal = (projectData: projectData) => {
           <div className="flex px-4 justify-center items-center min-[1001px]:hidden">
             <div className="flex flex-col gap-8 justify-center items-start">
               <div className="flex flex-col gap-2">
-                <p>My Role</p>
+                <p className="text-white">My Role</p>
                 <p className="md:text-lg text-grayAlt2">
                   <span className="text-white">{projectData.role} </span>
                   {projectData.descriptionRole}
                 </p>
               </div>
               <div className="flex flex-col gap-2">
-                <p>Team</p>
+                <p className="text-white">Team</p>
                 {projectData.team.map((name, index) => (
                   <p className="md:text-lg text-grayAlt2" key={index}>
                     {name}
@@ -120,11 +120,11 @@ const Journal = (projectData: projectData) => {
                 ))}
               </div>
               <div className="flex flex-col gap-2">
-                <p>Tech stacks</p>
+                <p className="text-white">Tech stacks</p>
                 <p className="md:text-lg text-grayAlt2">{projectData.stacks}</p>
               </div>
               <div className="flex flex-col gap-3">
-                <p>Overview</p>
+                <p className="text-white">Overview</p>
                 <p className="md:text-lg text-grayAlt2">
                   {projectData.Overview}
                 </p>
@@ -135,26 +135,26 @@ const Journal = (projectData: projectData) => {
           <div className="flex justify-center items-start gap-40 md:gap-16 max-[1001px]:hidden">
             <div className="flex flex-col gap-8">
               <div className="w-[25em]">
-                <p>My Role</p>
+                <p className="text-white">My Role</p>
                 <p className="text-lg text-grayAlt2">
                   <span className="text-white">{projectData.role} </span>
                   {projectData.descriptionRole}
                 </p>
               </div>
-              <div className="text-lg">
+              <div className="text-lg text-white">
                 <p>Team</p>
                 {projectData.team.map((name, index) => (
-                  <p className=" text-grayAlt2" key={index}>
+                  <p className=" text-grayAlt2 " key={index}>
                     {name}
                   </p>
                 ))}
               </div>
-              <div className="text-lg">
-                <p>Tech Stacks</p>
+              <div className="text-lg text-white">
+                <p className="text-white">Tech Stacks</p>
                 <p className="text-grayAlt2">{projectData.stacks}</p>
               </div>
             </div>
-            <div className="w-[30rem] text-lg ">
+            <div className="w-[30rem] text-lg text-white">
               <p>Overview</p>
               <p className="text-lg text-grayAlt2 ">{projectData.Overview}</p>
             </div>

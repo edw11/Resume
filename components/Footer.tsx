@@ -19,7 +19,7 @@ const Footer = () => {
             <div className="grid grid-rows-3 grid-cols-2 gap-y-7 gap-x-16 w-full max-w-md  ">
               <h1 className="text-sm text-grayAlt3 ">Main</h1>
               <h1 className="text-sm text-grayAlt3">Contact</h1>
-              <button className="flex" onClick={scrollToTop}>
+              <button className="flex text-white" onClick={scrollToTop}>
                 Work
               </button>
               <Link
@@ -37,6 +37,7 @@ const Footer = () => {
                 href="https://drive.google.com/file/d/1nMY-231EWsDOCURxFRXZ7790kWww5dmB/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="text-white"
               >
                 Resume
               </Link>

@@ -70,8 +70,8 @@ const ProjectCard = (product: data) => {
               src={product.imgURL}
               width={800}
               height={800}
-              alt="stadia"
-              className={`transition-all duration-500 rounded-t-xl max-lg:w-[700px] ${
+              alt="image"
+              className={`transition-all duration-500 sm:rounded-t-xl  max-lg:w-[700px] ${
                 isHover ? "xl:translate-y-0" : "xl:translate-y-8"
               }`}
             ></Image>

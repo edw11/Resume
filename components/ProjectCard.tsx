@@ -71,7 +71,7 @@ const ProjectCard = (product: data) => {
               width={800}
               height={800}
               alt="image"
-              className={`transition-all duration-500 sm:rounded-t-xl  max-lg:w-[700px] ${
+              className={`transition-all duration-500   max-lg:w-[700px] ${
                 isHover ? "xl:translate-y-0" : "xl:translate-y-8"
               }`}
             ></Image>

@@ -9,7 +9,7 @@ export default function Home() {
       <section className="fixed w-full z-10">
         <Navbar state={false} />
       </section>
-      <section className="pt-28 ">
+      <section className="pt-28">
         <Hero />
       </section>
       <section className=" flex justify-center px-3">

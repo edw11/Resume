@@ -11,7 +11,7 @@ const Navbar = ({ state }: { state: boolean }) => {
   };
   return (
     <>
-      <header className="z-50 flex items-center py-6 px-7 lg:justify-between xl:px-14">
+      <header className="z-50 flex items-center py-6 px-7 max-sm:px-5 lg:justify-between xl:px-14">
         <div className=" max-md:hidden max-lg:w-full ">
           <p className="text-white font-bold text-base xl:text-lg">
             Edward Cahyadi
@@ -25,7 +25,7 @@ const Navbar = ({ state }: { state: boolean }) => {
 
           <div className="relative">
             <div
-              className="flex flex-col relative  justify-center p-4 glass rounded-full border-[#363636] border-[1px] cursor-pointer "
+              className="flex flex-col relative  justify-center p-4 p glass rounded-full border-[#363636] border-[1px] cursor-pointer "
               onClick={change}
             >
               <Image

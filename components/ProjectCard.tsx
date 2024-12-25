@@ -40,7 +40,7 @@ const ProjectCard = (product: data) => {
     <div className="bg-dark_grey border-white border-2 border-opacity-10 border-solid px-2 pt-2 rounded-xl mt-10">
       <Link href={route}>
         <div
-          className={`flex-col flex grad px-7   pt-6 rounded-lg xl:w-[69rem] gap-14 justify-evenly `}
+          className={`flex-col flex grad px-7   pt-6 rounded-lg xl:w-[69rem] gap-14 max-sm:gap-10 justify-evenly `}
           onMouseEnter={change}
           onMouseLeave={change}
           style={gradientStyles}
@@ -71,7 +71,7 @@ const ProjectCard = (product: data) => {
               width={800}
               height={800}
               alt="stadia"
-              className={`transition-all duration-500 rounded-xl max-lg:w-[700px] ${
+              className={`transition-all duration-500 rounded-t-xl max-lg:w-[700px] ${
                 isHover ? "xl:translate-y-0" : "xl:translate-y-8"
               }`}
             ></Image>

@@ -30,8 +30,8 @@ const newMontreal = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Edward Cahyadi — Fulstack Web Developer",
-  description: "Fullstack Web Developer",
+  title: "Edward Cahyadi — Frontend Web Dev",
+  description: "Frontend Web Developer",
 };
 
 export default function RootLayout({

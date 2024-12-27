@@ -1,4 +1,11 @@
-import { nike, nikeBanner, products, shoes, tailwind } from "../public/images";
+import {
+  next,
+  nike,
+  nikeBanner,
+  products,
+  shoes,
+  tailwind,
+} from "../public/images";
 
 export const project = [
   {
@@ -27,13 +34,22 @@ export const project = [
       imageCard: [nikeBanner, products, shoes],
       explanation: [
         {
-          context: "OUR TECH MVP",
+          context: "DESIGN",
           explanationTitle: "Extending the power of Tailwind CSS",
           explanationSubTitle: "Rapid Development and highly customizable",
           explanationDetail:
             "Accelerates development by letting you write styling and structure simultaneously in HTML/JSX without switching files, while allowing you to define custom colors, fonts, spacing, and even create new utility classes. ",
           explanationImg: tailwind,
           explanationImgDetail: "smartastudio.com",
+        },
+        {
+          context: "PERFORMANCE",
+          explanationTitle: "Server Side Rendering with Next js",
+          explanationSubTitle: "Boosting Load Times and SEO ",
+          explanationDetail:
+            "Server Side Rendering (SSR) with Next.js ensures that web pages are pre-rendered on the server, delivering fully rendered HTML to the client. This approach significantly improves page load times, especially for low connection users. ",
+          explanationImg: next,
+          explanationImgDetail: "startupcode.kr",
         },
       ],
     },

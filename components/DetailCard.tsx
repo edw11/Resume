@@ -80,7 +80,7 @@ const DetailCard = (props: data) => {
               <h2 className="text-xl md:text-2xl w-full">
                 {explanation.explanationSubTitle}
               </h2>
-              <p className="text-grayAlt2 text-sm xl:text-xl ">
+              <p className="text-grayAlt2 text-md xl:text-xl w-full ">
                 {explanation.explanationDetail}
               </p>
             </div>
@@ -88,9 +88,9 @@ const DetailCard = (props: data) => {
               <div className="flex flex-col items-end gap-2">
                 <Image
                   src={explanation.explanationImg}
-                  width={1200}
-                  height={1200}
-                  alt="stadia"
+                  width={1000}
+                  height={1000}
+                  alt="explanation image"
                   className="rounded-lg"
                 ></Image>
                 <p className="text-xs text-grayAlt2 md:text-sm">

@@ -4,5 +4,6 @@ import nikeBanner from "./nike/nikeBanner.png";
 import products from "./nike/products.png";
 import shoes from "./nike/shoes.png";
 import tailwind from "./nike/tailwind.png";
+import next from "./nike/next.png";
 
-export { arrow, nike, nikeBanner, products, shoes, tailwind };
+export { arrow, nike, nikeBanner, products, shoes, tailwind, next };

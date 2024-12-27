@@ -158,7 +158,7 @@ const Page = () => {
                 <div className="flex flex-col gap-2 text-base text-white">
                   <p>© 2024 Edward Cahyadi. All Rights Reserved.</p>
                   <p className="text-sm text-grayAlt3">
-                    Made with love and Mango Green teas (50% sugar, less ice).
+                    This portfolio was made with React, Next.js, and Tailwind.
                   </p>
                 </div>
               </div>

@@ -54,24 +54,36 @@ const Navbar = ({ state }: { state: boolean }) => {
                   : "opacity-0 -translate-y-4 invisible"
               }`}
             >
-              <div className="flex  w-28 justify-between">
-                <p className="text-white">Linkedin</p>
-                <Image
-                  src="https://cdn.prod.website-files.com/63dcb6e1a80e9454b630f4c4/644ca61c76573b18898f41f8_icon-open.svg"
-                  alt="arrow"
-                  width={20}
-                  height={20}
-                />
-              </div>
-              <div className="flex w-28 justify-between">
-                <p className="text-white">Resume</p>
-                <Image
-                  src="https://cdn.prod.website-files.com/63dcb6e1a80e9454b630f4c4/644ca61c76573b18898f41f8_icon-open.svg"
-                  alt="arrow"
-                  width={20}
-                  height={20}
-                />
-              </div>
+              <Link
+                href="https://www.linkedin.com/in/edward-cahyadi11/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="flex  w-28 justify-between">
+                  <p className="text-white">Linkedin</p>
+                  <Image
+                    src="https://cdn.prod.website-files.com/63dcb6e1a80e9454b630f4c4/644ca61c76573b18898f41f8_icon-open.svg"
+                    alt="arrow"
+                    width={20}
+                    height={20}
+                  />
+                </div>
+              </Link>
+              <Link
+                href="https://drive.google.com/file/d/1nMY-231EWsDOCURxFRXZ7790kWww5dmB/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="flex w-28 justify-between">
+                  <p className="text-white">Resume</p>
+                  <Image
+                    src="https://cdn.prod.website-files.com/63dcb6e1a80e9454b630f4c4/644ca61c76573b18898f41f8_icon-open.svg"
+                    alt="arrow"
+                    width={20}
+                    height={20}
+                  />
+                </div>
+              </Link>
             </div>
           </div>
         </div>

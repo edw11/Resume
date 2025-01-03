@@ -126,7 +126,7 @@ const Page = () => {
         <div>
           <div className="w-[100vw] h-[0.1rem] bg-def"></div>
           <div className="flex justify-center w-full ">
-            <div className="w-[69rem] px-7 ">
+            <div className="w-[69rem] px-7 xl:px-0 ">
               <div className="flex flex-col mt-5 gap-14 ">
                 {/* px-7 */}
                 <div className="grid grid-rows-3 grid-cols-2 gap-y-7 gap-x-16 w-full max-w-md  ">

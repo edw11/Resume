@@ -13,7 +13,7 @@ const Slide = ({ state }: { state: boolean }) => {
     <div className="flex relative w-auto h-auto glass px-3 py-2 rounded-full text-sm border-[#363636] border-[1px]">
       <div
         className={`glass w-20 h-9 absolute top-[0.5rem]  z-0 rounded-full transition-all duration-200 ${
-          choose ? "ml-[4.7rem] transition-all duration-200 " : ""
+          choose ? "ml-[4.6rem] transition-all duration-200 " : ""
         }`}
       ></div>
       <div

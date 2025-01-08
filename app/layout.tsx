@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 // Load the local font files
@@ -30,8 +31,8 @@ const newMontreal = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Edward Cahyadi — Frontend Web Dev",
-  description: "Frontend Web Developer",
+  title: "Edward Cahyadi — Software Engineer",
+  description: "Software Engineer",
 };
 
 export default function RootLayout({
@@ -41,7 +42,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${newMontreal.className} antialiased`}>{children}</body>
+      <body className={`${newMontreal.className} antialiased`}>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }

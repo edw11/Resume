@@ -22,16 +22,16 @@ const InfoDetails: React.FC<InfoDetailsProps> = ({ onImageLoad }) => {
           </div>
           <div className="flex flex-col gap-5">
             <p className="text-white text-lg">
-              My Interest in Front End Development
+              My Interest in Software Development
             </p>
             <p className="max-w-lg text-grayAlt2">
-              My passion for building front-end applications emerged from my
-              fascination with how technology can shape user experiences. I am
-              particularly drawn to the creative and technical challenges of
-              creating visually appealing, interactive, and responsive web
-              pages. Through working with JavaScript frameworks like React and
-              Next.js, I&apos;ve come to appreciate the balance between design
-              and functionality.
+              My passion for building applications emerged from my fascination
+              with how technology can shape user experiences. I am particularly
+              drawn to the creative and technical challenges of creating
+              visually appealing, interactive, and responsive applications .
+              Through working with JavaScript frameworks like React and Next.js,
+              I&apos;ve come to appreciate the balance between design and
+              functionality.
             </p>
           </div>
         </div>
@@ -100,16 +100,16 @@ const InfoDetails: React.FC<InfoDetailsProps> = ({ onImageLoad }) => {
           </div>
           <div className="flex flex-col gap-5">
             <p className="text-lg text-white">
-              My Interest in Front End Development
+              My Interest in Software Development
             </p>
             <p className="max-w-lg text-grayAlt2">
-              My passion for building front-end applications emerged from my
-              fascination with how technology can shape user experiences. I am
-              particularly drawn to the creative and technical challenges of
-              creating visually appealing, interactive, and responsive web
-              pages. Through working with JavaScript frameworks like React and
-              Next.js, I&apos;ve come to appreciate the balance between design
-              and functionality.
+              My passion for building applications emerged from my fascination
+              with how technology can shape user experiences. I am particularly
+              drawn to the creative and technical challenges of creating
+              visually appealing, interactive, and responsive applications .
+              Through working with JavaScript frameworks like React and Next.js,
+              I&apos;ve come to appreciate the balance between design and
+              functionality.
             </p>
           </div>
         </div>

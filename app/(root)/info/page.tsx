@@ -96,7 +96,7 @@ const Page = () => {
                   <p>07/&apos;24 - 08/&apos;24</p>
                 </div>
                 <p className="max-w-md">
-                  i assisted engineers in doing in-depth research on specific
+                  I assisted engineers in doing in-depth research on specific
                   microcontroller boards to support the development and
                   optimization of elevator inverter systems.
                 </p>
@@ -112,7 +112,7 @@ const Page = () => {
                   <p>10/&apos;23 - 02/&apos;24</p>
                 </div>
                 <p className="max-w-md text-white">
-                  i developed strategy and roadmap for the global version of the
+                  I developed strategy and roadmap for the global version of the
                   company&apos;s healthcare app, designed wireframes, and
                   conducted comprehensive UX research to align the app with the
                   needs of international markets.

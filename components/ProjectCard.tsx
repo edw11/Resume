@@ -47,7 +47,7 @@ const ProjectCard = (product: data) => {
         >
           <div className="flex justify-between items-center  ">
             <div className="flex flex-col gap-2 ">
-              <p className="text-xl sm:text-2xl text-white">
+              <p className="text-xl md:text-2xl text-white">
                 {product.bigTitle}
               </p>
               <p className="text-base text-white">

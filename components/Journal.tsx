@@ -132,7 +132,7 @@ const Journal = (projectData: projectData) => {
             </div>
           </div>
 
-          <div className="flex justify-center items-start gap-40 md:gap-16 max-[1001px]:hidden">
+          <div className="flex justify-center items-start md:gap-16 xl:gap-60 max-[1001px]:hidden">
             <div className="flex flex-col gap-8">
               <div className="w-[25em]">
                 <p className="text-white">My Role</p>

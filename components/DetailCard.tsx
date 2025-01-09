@@ -25,42 +25,46 @@ type data = {
 const DetailCard = (props: data) => {
   return (
     <div className="flex flex-col justify-center items-center">
-      <div className="bg-dark_grey w-full border-white border-2 border-opacity-10 border-solid px-2 pt-2 rounded-2xl mt-24">
-        <div
-          className={`flex-col flex px-4 md:px-7 pt-6 rounded-lg gap-5 md:gap-14 `}
-        >
-          <div className="flex justify-center items-center">
-            <div className="flex flex-col gap-6 items-center">
-              <div className="flex flex-col gap-3 items-center">
-                <Image
-                  src="https://cdn.prod.website-files.com/63dcb6e1a80e9454b630f4c4/643c53af931a3ba99ceedfbf_icon-highlights.svg"
-                  width={40}
-                  height={40}
-                  alt="logo"
-                ></Image>
-                <p className="text-grayAlt2 text-base">{props.detailCard}</p>
-              </div>
+      {props.imageCard.length != 0 ? (
+        <div className="bg-dark_grey w-full border-white border-2 border-opacity-10 border-solid px-2 pt-2 rounded-2xl mt-24">
+          <div
+            className={`flex-col flex px-4 md:px-7 pt-6 rounded-lg gap-5 md:gap-14 `}
+          >
+            <div className="flex justify-center items-center">
+              <div className="flex flex-col gap-6 items-center">
+                <div className="flex flex-col gap-3 items-center">
+                  <Image
+                    src="https://cdn.prod.website-files.com/63dcb6e1a80e9454b630f4c4/643c53af931a3ba99ceedfbf_icon-highlights.svg"
+                    width={40}
+                    height={40}
+                    alt="logo"
+                  ></Image>
+                  <p className="text-grayAlt2 text-base">{props.detailCard}</p>
+                </div>
 
-              <p className="text-base md:text-2xl max-w-[50rem]  text-whiteAlt2 text-center">
-                {props.titleCard}
-              </p>
+                <p className="text-base md:text-2xl max-w-[50rem]  text-whiteAlt2 text-center">
+                  {props.titleCard}
+                </p>
+              </div>
+            </div>
+            <div className="w-full justify-center items-center flex flex-col ">
+              {props.imageCard.map((img, index) => (
+                <Image
+                  key={index}
+                  src={img}
+                  width={1000}
+                  height={1000}
+                  className="mt-8 sm:mt-14"
+                  alt="stadia"
+                ></Image>
+              ))}
             </div>
           </div>
-
-          <div className="w-full justify-center items-center flex flex-col ">
-            {props.imageCard.map((img, index) => (
-              <Image
-                key={index}
-                src={img}
-                width={1000}
-                height={1000}
-                className="mt-8 sm:mt-14"
-                alt="stadia"
-              ></Image>
-            ))}
-          </div>
         </div>
-      </div>
+      ) : (
+        0
+      )}
+
       {props.explanation.map((explanation, index) => (
         <div key={index} className="px-4">
           <div className="flex flex-col items-start mt-20 border-t-2 border-grayAlt3 gap-5 md:gap-14 xl:w-[70rem]">
@@ -77,7 +81,7 @@ const DetailCard = (props: data) => {
             </div>
 
             <div className="flex justify-center items-start max-md:flex-col max-md:gap-5 text-white">
-              <h2 className="text-xl md:text-2xl w-full">
+              <h2 className="text-xl xl:text-2xl w-full">
                 {explanation.explanationSubTitle}
               </h2>
               <p className="text-grayAlt2 text-md xl:text-xl w-full ">

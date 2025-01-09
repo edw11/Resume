@@ -82,7 +82,7 @@ const Journal = (projectData: projectData) => {
           }`}
         >
           <div className="flex flex-col justify-center items-center pt-14 gap-4">
-            <h1 className="text-shadow text-4xl xl:text-6xl text-white">
+            <h1 className="text-shadow text-3xl xl:text-6xl text-white">
               {projectData.descriptionTitle}
             </h1>
             <Link

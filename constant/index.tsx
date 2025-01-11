@@ -109,8 +109,8 @@ export const project = [
       explanation: [
         {
           context: "DESIGN",
-          explanationTitle: "Extending the power of Tailwind CSS",
-          explanationSubTitle: "Rapid Development and highly customizable",
+          explanationTitle: "Extending the Power of Tailwind CSS",
+          explanationSubTitle: "Rapid Development and Highly Customizable",
           explanationDetail:
             "Accelerates development by letting you write styling and structure simultaneously in HTML/JSX without switching files, while allowing you to define custom colors, fonts, spacing, and even create new utility classes. ",
           explanationImg: tailwind,

@@ -1,5 +1,11 @@
 import {
   architecture,
+  banner,
+  cover,
+  infinite,
+  insta,
+  mode,
+  nasa,
   next,
   nike,
   nikeBanner,
@@ -15,6 +21,69 @@ import {
 export const project = [
   {
     id: "0",
+    imgURL: cover,
+    bigTitle: "Nasagram",
+    title: "Side Project",
+    description: "A gallery for NASA's space picture API.",
+    colorStart: "gray",
+    colorEnd: "black",
+    detail: {
+      imgMain: banner,
+      descriptionTitle: "Nasagram",
+      link: "https://nasagram-dun.vercel.app/",
+      descriptionSmallTitle: "Give it a visit",
+      role: "Team lead",
+      descriptionRole:
+        "-- Design, prototyping and wireframing, interaction design, front-end code",
+      team: ["-"],
+      stacks: "React JS | Next JS 15 | Shadcn UI | Tailwind CSS",
+      Overview:
+        "A website showcasing NASA's APOD (Astronomy Picture of the Day) API, built with Next.js for server-side rendering, React for interactivity, and Shadcn UI for skeleton loading. This project emphasizes creating an exceptional user interface for the APOD API while maintaining optimal performance and speed. Personally, I believe the Instagram-inspired design and infinite scrolling feature make this project stand out in terms of user experience, which is why I chose this approach for the design. ",
+      detailCard: "",
+      titleCard: "",
+      imageCard: [],
+      explanation: [
+        {
+          context: "API Explanation",
+          explanationTitle: "APOD",
+          explanationSubTitle: "Astronomy Picture of the Day",
+          explanationDetail:
+            "The APOD (Astronomy Picture of the Day) API, provided by NASA, offers a daily image or photograph of our fascinating universe, accompanied by a detailed explanation written by professional astronomers. It is an excellent resource for exploring and learning about the wonders of space, featuring everything from stunning galaxy visuals to breathtaking planetary landscapes. ",
+          explanationImg: nasa,
+          explanationImgDetail: "NASA",
+        },
+        {
+          context: "DESIGN",
+          explanationTitle: "The Instagram inspired-design",
+          explanationSubTitle: "Blending Aesthetics with Usability",
+          explanationDetail:
+            "The design of this project is inspired by Instagram, blending familiarity with functionality to create an engaging user experience. This approach ensures seamless navigation and continuous exploration, mimicking the interactive and intuitive style of popular social media platforms. The combination of sleek aesthetics and practicality makes 'NASAGRAM' both user-friendly and visually captivating.",
+          explanationImg: insta,
+          explanationImgDetail: "Nasagram",
+        },
+        {
+          context: "The Features",
+          explanationTitle: "The infinite scrolling feature",
+          explanationSubTitle: "Effortless Exploration of Space",
+          explanationDetail:
+            "The infinite scrolling feature allows users to seamlessly browse through NASA's stunning APOD collection without interruptions. By loading content dynamically as users scroll, it creates a smooth and engaging experience, perfect for exploring the vast wonders of the universe.",
+          explanationImg: infinite,
+          explanationImgDetail: "Nasagram",
+        },
+        {
+          context: "The Mode",
+          explanationTitle: "Light and dark mode",
+          explanationSubTitle: "Customizing the Viewing Experience",
+          explanationDetail:
+            "Nasagram' offers both light and dark modes, allowing users to tailor their viewing experience to their preferences or lighting conditions. The light mode provides a clean and vibrant interface, ideal for daytime use, while the dark mode ensures a comfortable and immersive experience during nighttime browsing.",
+          explanationImg: mode,
+          explanationImgDetail: "Nasagram",
+        },
+      ],
+    },
+  },
+  {
+    id: "1",
     imgURL: nikeBanner,
     bigTitle: "Nike Clone Website",
     title: "Side Project",
@@ -61,7 +130,7 @@ export const project = [
   },
 
   {
-    id: "1",
+    id: "2",
     imgURL: ser_banner,
     bigTitle: "Speech Emotion Recognition",
     title: "AI Project",

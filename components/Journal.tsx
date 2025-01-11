@@ -196,7 +196,7 @@ const Journal = (projectData: projectData) => {
                 </Link>
               </div>
               <div className="flex flex-col gap-2 text-base text-white">
-                <p>© 2024 Edward Cahyadi. All Rights Reserved.</p>
+                <p>© 2025 Edward Cahyadi. All Rights Reserved.</p>
                 <p className="text-sm text-grayAlt3">
                   This portfolio was made with React, Next.js, and Tailwind.
                 </p>

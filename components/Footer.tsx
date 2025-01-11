@@ -44,7 +44,7 @@ const Footer = () => {
             </div>
             <div className="flex flex-col gap-2 text-base">
               <p className="text-white">
-                © 2024 Edward Cahyadi. All Rights Reserved.
+                © 2025 Edward Cahyadi. All Rights Reserved.
               </p>
               <p className="text-sm text-grayAlt3">
                 This portfolio was made with React, Next.js, and Tailwind.

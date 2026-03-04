@@ -33,6 +33,9 @@ export default {
       animation: {
         "bounce-color": "bounce-color 2.6s infinite",
         slideUp: "slideUp 1s ease-out forwards",
+        fadeUp: "fadeUp 0.6s ease-out forwards",
+        fadeIn: "fadeIn 0.6s ease-out forwards",
+        scaleIn: "scaleIn 0.5s ease-out forwards",
       },
       keyframes: {
         "bounce-color": {
@@ -48,6 +51,18 @@ export default {
         slideUp: {
           "0%": { transform: "translateY(50px)", opacity: "0" },
           "100%": { transform: "translateY(0)", opacity: "1" },
+        },
+        fadeUp: {
+          "0%": { transform: "translateY(30px)", opacity: "0" },
+          "100%": { transform: "translateY(0)", opacity: "1" },
+        },
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        scaleIn: {
+          "0%": { transform: "scale(0.95)", opacity: "0" },
+          "100%": { transform: "scale(1)", opacity: "1" },
         },
       },
     },

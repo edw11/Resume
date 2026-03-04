@@ -1,10 +1,10 @@
 "use client";
-import Image from "next/image";
 import Slide from "./Slide";
 import Link from "next/link";
 import { useState } from "react";
+import type { SanityLinks } from "@/sanity/types";
 
-const Navbar = ({ state }: { state: boolean }) => {
+const Navbar = ({ state, links }: { state: boolean; links: SanityLinks }) => {
   const [click, setClicked] = useState(false);
   const change = () => {
     setClicked(!click);
@@ -16,7 +16,7 @@ const Navbar = ({ state }: { state: boolean }) => {
           <p className="text-white font-bold text-base xl:text-lg">
             Edward Cahyadi
           </p>
-          <p className="text-sm text-gray-400 xl:text-base">
+          <p className="text-sm text-grayAlt2 xl:text-base">
             Software Developer
           </p>
         </div>
@@ -24,29 +24,43 @@ const Navbar = ({ state }: { state: boolean }) => {
           <Slide state={state} />
 
           <div className="relative">
-            <div
-              className="flex flex-col relative  justify-center p-4 p glass rounded-full border-[#363636] border-[1px] cursor-pointer "
+            <button
+              className="flex flex-col relative justify-center p-4 glass rounded-full border-[#363636] border-[1px] cursor-pointer"
               onClick={change}
+              aria-label={click ? "Close menu" : "Open menu"}
+              aria-expanded={click}
             >
-              <Image
-                src="https://cdn.prod.website-files.com/63dcb6e1a80e9454b630f4c4/644c8981f87a7036b4c7fa64_icon-%40.svg"
-                alt="@"
+              <svg
                 width={22}
                 height={22}
-                className={`transition-opacity duration-1000 absolute select-none ${
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                strokeWidth={2}
+                className={`transition-opacity duration-500 absolute select-none ${
                   click ? "opacity-0 invisible" : "opacity-100 visible"
                 }`}
-              />
-              <Image
-                src="https://cdn.prod.website-files.com/63dcb6e1a80e9454b630f4c4/645a01ff46a1cf3d85d90049_icon-close.svg"
-                alt="close"
+              >
+                <circle cx="12" cy="12" r="1" fill="white" />
+                <circle cx="12" cy="5" r="1" fill="white" />
+                <circle cx="12" cy="19" r="1" fill="white" />
+              </svg>
+              <svg
                 width={22}
                 height={22}
-                className={`transition-opacity duration-1000 select-none  ${
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                strokeWidth={2}
+                strokeLinecap="round"
+                className={`transition-opacity duration-500 select-none ${
                   !click ? "opacity-0 invisible" : "opacity-100 visible"
                 }`}
-              />
-            </div>
+              >
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
             <div
               className={`absolute glass py-8 px-8 flex flex-col gap-6 rounded-xl right-0 top-[4.3rem]  transition-all duration-800 ease-in-out  ${
                 click
@@ -55,33 +69,39 @@ const Navbar = ({ state }: { state: boolean }) => {
               }`}
             >
               <Link
-                href="https://www.linkedin.com/in/edward-cahyadi11/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div className="flex  w-28 justify-between">
-                  <p className="text-white">Linkedin</p>
-                  <Image
-                    src="https://cdn.prod.website-files.com/63dcb6e1a80e9454b630f4c4/644ca61c76573b18898f41f8_icon-open.svg"
-                    alt="arrow"
-                    width={20}
-                    height={20}
-                  />
-                </div>
-              </Link>
-              <Link
-                href="https://drive.google.com/file/d/1nMY-231EWsDOCURxFRXZ7790kWww5dmB/view?usp=sharing"
+                href={links.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <div className="flex w-28 justify-between">
-                  <p className="text-white">Resume</p>
-                  <Image
-                    src="https://cdn.prod.website-files.com/63dcb6e1a80e9454b630f4c4/644ca61c76573b18898f41f8_icon-open.svg"
-                    alt="arrow"
-                    width={20}
-                    height={20}
-                  />
+                  <p className="text-white transition-colors duration-300 hover:text-whiteAlt2">LinkedIn</p>
+                  <svg width={20} height={20} viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth={2} strokeLinecap="round">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </div>
+              </Link>
+              <Link
+                href={links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="flex w-28 justify-between">
+                  <p className="text-white transition-colors duration-300 hover:text-whiteAlt2">GitHub</p>
+                  <svg width={20} height={20} viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth={2} strokeLinecap="round">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </div>
+              </Link>
+              <Link
+                href={links.resume}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="flex w-28 justify-between">
+                  <p className="text-white transition-colors duration-300 hover:text-whiteAlt2">Resume</p>
+                  <svg width={20} height={20} viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth={2} strokeLinecap="round">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
                 </div>
               </Link>
             </div>
@@ -93,22 +113,32 @@ const Navbar = ({ state }: { state: boolean }) => {
         </div>
 
         <div className="flex gap-5 text-sm max-lg:hidden">
-          <div className="flex gap-2 hover:text-shadow">
+          <div className="flex gap-2">
             <Link
-              href="https://www.linkedin.com/in/edward-cahyadi11/"
+              href={links.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white"
+              className="text-white transition-colors duration-300 hover:text-whiteAlt2"
             >
-              Linkedin
+              LinkedIn
             </Link>
           </div>
-          <div className="flex gap-2 hover:text-shadow">
+          <div className="flex gap-2">
             <Link
-              href="https://drive.google.com/file/d/1nMY-231EWsDOCURxFRXZ7790kWww5dmB/view?usp=sharing"
+              href={links.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white"
+              className="text-white transition-colors duration-300 hover:text-whiteAlt2"
+            >
+              GitHub
+            </Link>
+          </div>
+          <div className="flex gap-2">
+            <Link
+              href={links.resume}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white transition-colors duration-300 hover:text-whiteAlt2"
             >
               Resume
             </Link>

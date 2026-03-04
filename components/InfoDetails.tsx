@@ -1,118 +1,104 @@
 import Image from "next/image";
 import React from "react";
+import { urlFor } from "@/sanity/image";
+import type { SanityAboutSection } from "@/sanity/types";
 
 interface InfoDetailsProps {
-  onImageLoad?: () => void; // The prop is optional and is a function with no arguments and no return value
+  onImageLoad?: () => void;
+  aboutSections: SanityAboutSection[];
 }
 
-const InfoDetails: React.FC<InfoDetailsProps> = ({ onImageLoad }) => {
+const InfoDetails: React.FC<InfoDetailsProps> = ({ onImageLoad, aboutSections }) => {
+  const section1 = aboutSections?.[0];
+  const section2 = aboutSections?.[1];
+
   return (
     <div>
+      {/* Desktop layout */}
       <div className="flex  w-full gap-10 mt-10 max-md:hidden">
-        <div className="flex flex-col items-start gap-5">
-          <div className="p-2 bg-def rounded-md min-w-[300px] max-w-[500px]">
-            <Image
-              src="/images/view.png"
-              width={500}
-              height={500}
-              alt="view"
-              className="rounded-md"
-              onLoad={onImageLoad}
-            ></Image>
-          </div>
-          <div className="flex flex-col gap-5">
-            <p className="text-white text-lg">
-              My Interest in Software Development
-            </p>
-            <p className="max-w-lg text-grayAlt2">
-              My passion for building applications emerged from my fascination
-              with how technology can shape user experiences. I am particularly
-              drawn to the creative and technical challenges of creating
-              visually appealing, interactive, and responsive applications .
-              Through working with JavaScript frameworks like React and Next.js,
-              I&apos;ve come to appreciate the balance between design and
-              functionality.
-            </p>
-          </div>
-        </div>
-
-        <div className="flex flex-col items-start gap-5">
-          <div className="flex flex-col gap-5 ">
-            <p className="text-lg text-white">
-              My Background in Information Technology
-            </p>
-            <p className="max-w-lg text-grayAlt2">
-              In February of 2025, I graduated from IT school at one of the
-              universities in South Korea. During my studies, I developed a
-              strong passion for web development, particularly front-end
-              technologies. I became proficient in HTML, CSS, JavaScript, and
-              frameworks like React and Next.js, where I focused on creating
-              dynamic, user-friendly websites and applications.
-            </p>
-            <div className="p-2 bg-def rounded-md min-w-[350px] max-w-[500px]">
-              <Image
-                src="/images/viewEurope.png"
-                width={500}
-                height={500}
-                alt="view"
-                className="rounded-md"
-              ></Image>
+        {section1 && (
+          <div className="flex flex-col items-start gap-5">
+            {section1.image && (
+              <div className="p-2 bg-def rounded-md min-w-[300px] max-w-[500px]">
+                <Image
+                  src={urlFor(section1.image).width(500).url()}
+                  width={500}
+                  height={500}
+                  alt={section1.heading || "about image"}
+                  className="rounded-md transition-transform duration-500 hover:scale-[1.02]"
+                  onLoad={onImageLoad}
+                />
+              </div>
+            )}
+            <div className="flex flex-col gap-5">
+              <p className="text-white text-lg">{section1.heading}</p>
+              <p className="max-w-lg text-grayAlt2">{section1.paragraph}</p>
             </div>
           </div>
-        </div>
+        )}
+
+        {section2 && (
+          <div className="flex flex-col items-start gap-5">
+            <div className="flex flex-col gap-5 ">
+              <p className="text-lg text-white">{section2.heading}</p>
+              <p className="max-w-lg text-grayAlt2">{section2.paragraph}</p>
+              {section2.image && (
+                <div className="p-2 bg-def rounded-md min-w-[350px] max-w-[500px]">
+                  <Image
+                    src={urlFor(section2.image).width(500).url()}
+                    width={500}
+                    height={500}
+                    alt={section2.heading || "about image"}
+                    className="rounded-md transition-transform duration-500 hover:scale-[1.02]"
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+        )}
       </div>
 
+      {/* Mobile layout */}
       <div className="flex flex-col w-full gap-10 mt-10 md:hidden">
-        <div className="flex flex-col items-start gap-5">
-          <div className="p-2 bg-def rounded-md min-w-[300px] max-w-[500px]">
-            <Image
-              src="/images/view.png"
-              width={500}
-              height={500}
-              alt="view"
-              className="rounded-md"
-            ></Image>
+        {section1 && (
+          <div className="flex flex-col items-start gap-5">
+            {section1.image && (
+              <div className="p-2 bg-def rounded-md min-w-[300px] max-w-[500px]">
+                <Image
+                  src={urlFor(section1.image).width(500).url()}
+                  width={500}
+                  height={500}
+                  alt={section1.heading || "about image"}
+                  className="rounded-md transition-transform duration-500 hover:scale-[1.02]"
+                />
+              </div>
+            )}
+            <div className="flex flex-col gap-5">
+              <p className="text-lg text-white">{section2?.heading}</p>
+              <p className="max-w-lg text-grayAlt2">{section2?.paragraph}</p>
+            </div>
           </div>
-          <div className="flex flex-col gap-5">
-            <p className="text-lg text-white">
-              My Background in Information Technology
-            </p>
-            <p className="max-w-lg text-grayAlt2">
-              In February of 2025, I graduated from IT school at one of the
-              universities in South Korea. During my studies, I developed a
-              strong passion for web development, particularly front-end
-              technologies. I became proficient in HTML, CSS, JavaScript, and
-              frameworks like React and Next.js, where I focused on creating
-              dynamic, user-friendly websites and applications.
-            </p>
-          </div>
-        </div>
+        )}
 
-        <div className="flex flex-col items-start gap-5">
-          <div className="p-2 bg-def rounded-md min-w-[300px] max-w-[500px]">
-            <Image
-              src="/images/viewEurope.png"
-              width={500}
-              height={500}
-              alt="view"
-              className="rounded-md"
-            ></Image>
+        {section2 && (
+          <div className="flex flex-col items-start gap-5">
+            {section2.image && (
+              <div className="p-2 bg-def rounded-md min-w-[300px] max-w-[500px]">
+                <Image
+                  src={urlFor(section2.image).width(500).url()}
+                  width={500}
+                  height={500}
+                  alt={section2.heading || "about image"}
+                  className="rounded-md transition-transform duration-500 hover:scale-[1.02]"
+                />
+              </div>
+            )}
+            <div className="flex flex-col gap-5">
+              <p className="text-lg text-white">{section1?.heading}</p>
+              <p className="max-w-lg text-grayAlt2">{section1?.paragraph}</p>
+            </div>
           </div>
-          <div className="flex flex-col gap-5">
-            <p className="text-lg text-white">
-              My Interest in Software Development
-            </p>
-            <p className="max-w-lg text-grayAlt2">
-              My passion for building applications emerged from my fascination
-              with how technology can shape user experiences. I am particularly
-              drawn to the creative and technical challenges of creating
-              visually appealing, interactive, and responsive applications .
-              Through working with JavaScript frameworks like React and Next.js,
-              I&apos;ve come to appreciate the balance between design and
-              functionality.
-            </p>
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );

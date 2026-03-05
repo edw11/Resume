@@ -1,10 +1,12 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Button from "@/components/Button";
 import DetailCard from "@/components/DetailCard";
 import Image from "next/image";
 import Link from "next/link";
 import { urlFor } from "@/sanity/image";
+import { usePageLoader } from "@/components/usePageLoader";
+import PageLoadingOverlay from "@/components/PageLoadingOverlay";
 import type { SanityProjectDetail, SanityLinks } from "@/sanity/types";
 
 type JournalProps = {
@@ -15,46 +17,15 @@ type JournalProps = {
 };
 
 const Journal = ({ project, links, name, jobTitle }: JournalProps) => {
-  const [isLoading, setLoading] = useState(true);
-
-  const onImageLoad = () => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 200);
-  };
-
-  useEffect(() => {
-    if (isLoading) {
-      document.body.style.overflow = "hidden";
-      window.scrollTo(0, 0);
-    } else {
-      document.body.style.overflow = "auto";
-    }
-
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [isLoading]);
+  const { isLoading, onImageLoad, containerRef } = usePageLoader();
 
   const linkClass =
     "text-grayAlt2 transition-colors duration-300 hover:text-white relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-grayAlt2 after:transition-all after:duration-300 hover:after:w-full";
 
   return (
-    <div>
-      <div
-        className={`flex justify-center items-center min-h-screen bg-black fixed inset-0 z-10 transition-opacity duration-500 ${
-          isLoading ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
-      >
-        <Image
-          src="/icons/loader.svg"
-          alt="loader"
-          width={24}
-          height={24}
-          className="ml-2 animate-spin"
-        />
-      </div>
-      <div className="px-2 py-5 sm:p-8 bg-gradient-to-b from-white/10 via-black to-black">
+    <div ref={containerRef}>
+      <PageLoadingOverlay isLoading={isLoading} />
+      <div className="px-2 py-5 sm:p-8 bg-gradient-to-b from-white/10 via-black to-black overflow-x-hidden">
         <div className={`${isLoading ? "hidden" : ""}`}>
           <Button />
         </div>

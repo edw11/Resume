@@ -1,37 +1,15 @@
 "use client";
 import InfoDetails from "@/components/InfoDetails";
 import Navbar from "@/components/Navbar";
-import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useScrollReveal } from "@/components/useScrollReveal";
+import { usePageLoader } from "@/components/usePageLoader";
+import PageLoadingOverlay from "@/components/PageLoadingOverlay";
 import type { SanitySiteSettings, SanityLinks } from "@/sanity/types";
 
 const InfoPageClient = ({ settings }: { settings: SanitySiteSettings }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [isLoading, setLoading] = useState(true);
-  const onImageLoad = () => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 200);
-  };
-
-  useEffect(() => {
-    if (isLoading) {
-      document.body.style.overflow = "hidden";
-      window.scrollTo(0, 0);
-    } else {
-      document.body.style.overflow = "auto";
-    }
-
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [isLoading]);
-
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
+  const { isLoading, onImageLoad, containerRef } = usePageLoader();
 
   const infoDetailsReveal = useScrollReveal();
   const experienceReveal = useScrollReveal();
@@ -55,27 +33,15 @@ const InfoPageClient = ({ settings }: { settings: SanitySiteSettings }) => {
     "text-grayAlt2 transition-colors duration-300 hover:text-white relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-grayAlt2 after:transition-all after:duration-300 hover:after:w-full";
 
   return (
-    <div>
-      <div
-        className={`flex justify-center items-center min-h-screen bg-black fixed inset-0 z-10 transition-opacity duration-500 ${
-          isLoading ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
-      >
-        <Image
-          src="/icons/loader.svg"
-          alt="loader"
-          width={24}
-          height={24}
-          className="ml-2 animate-spin"
-        />
-      </div>
+    <div ref={containerRef}>
+      <PageLoadingOverlay isLoading={isLoading} />
       <div className="inset-0 bg-gradient-to-b from-white/10 max-md:from-white/10 to-black">
         <section className="fixed w-full z-10">
           <Navbar state={true} links={links} />
         </section>
         <div
           className={`pt-28 flex flex-col w-full items-center justify-center px-9 ${
-            isLoaded ? "animate-slideUp" : ""
+            !isLoading ? "animate-slideUp" : ""
           }`}
         >
           <div className="flex flex-col gap-8 justify-center items-center">

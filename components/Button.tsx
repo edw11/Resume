@@ -10,7 +10,7 @@ const Button = () => {
   return (
     <div className="fixed z-20">
       <Link
-        className="py-2 pr-5 pl-3 glass rounded-full flex items-center gap-3 hover:text-shadow hover:bg-white/10 transition-all duration-500 text-white"
+        className="py-2 pr-5 pl-3 glass backdrop-blur-3xl bg-black/40 rounded-full flex items-center gap-3 hover:text-shadow hover:bg-white/10 transition-all duration-500 text-white"
         onMouseEnter={change}
         onMouseLeave={change}
         href={"/"}

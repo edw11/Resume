@@ -25,7 +25,7 @@ const Navbar = ({ state, links }: { state: boolean; links: SanityLinks }) => {
 
           <div className="relative">
             <button
-              className="flex flex-col relative justify-center p-4 glass rounded-full border-[#363636] border-[1px] cursor-pointer"
+              className="flex flex-col relative justify-center p-4 glass backdrop-blur-3xl bg-black/40 rounded-full border-[#363636] border-[1px] cursor-pointer"
               onClick={change}
               aria-label={click ? "Close menu" : "Open menu"}
               aria-expanded={click}
@@ -62,7 +62,7 @@ const Navbar = ({ state, links }: { state: boolean; links: SanityLinks }) => {
               </svg>
             </button>
             <div
-              className={`absolute glass py-8 px-8 flex flex-col gap-6 rounded-xl right-0 top-[4.3rem]  transition-all duration-800 ease-in-out  ${
+              className={`absolute glass bg-black/80 py-8 px-8 flex flex-col gap-6 rounded-xl right-0 top-[4.3rem]  transition-all duration-800 ease-in-out  ${
                 click
                   ? "opacity-100 translate-y-0 visible"
                   : "opacity-0 -translate-y-4 invisible"

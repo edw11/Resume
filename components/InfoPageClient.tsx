@@ -9,7 +9,7 @@ import PageLoadingOverlay from "@/components/PageLoadingOverlay";
 import type { SanitySiteSettings, SanityLinks } from "@/sanity/types";
 
 const InfoPageClient = ({ settings }: { settings: SanitySiteSettings }) => {
-  const { isLoading, onImageLoad, containerRef } = usePageLoader();
+  const { isLoading, containerRef } = usePageLoader();
 
   const infoDetailsReveal = useScrollReveal();
   const experienceReveal = useScrollReveal();
@@ -55,7 +55,7 @@ const InfoPageClient = ({ settings }: { settings: SanitySiteSettings }) => {
               </p>
             </div>
             <div ref={infoDetailsReveal.ref} className={infoDetailsReveal.isVisible ? "animate-fadeUp" : "opacity-0"}>
-              <InfoDetails onImageLoad={onImageLoad} aboutSections={settings.aboutSections || []} />
+              <InfoDetails aboutSections={settings.aboutSections || []} />
             </div>
 
             <div ref={experienceReveal.ref} className={experienceReveal.isVisible ? "animate-fadeUp" : "opacity-0"}>

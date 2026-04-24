@@ -4,38 +4,44 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-Personal portfolio/resume website for Edward Cahyadi, built with Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS 3, and **Sanity v4** as a headless CMS. Deployed on Vercel.
+Personal resume / portfolio for Edward Cahyadi. Self-contained static site — single `index.html` with React 18 and Babel Standalone loaded via CDN. No build step, no framework, no backend. Deployed on Vercel as static files.
 
-## Commands
+## Local preview
 
-- `npm run dev` — Start dev server with Turbopack (http://localhost:3000)
-- `npm run build` — Production build
-- `npm run lint` — ESLint (next/core-web-vitals + next/typescript)
+No install or build. Serve the repo root with any static file server:
+
+```bash
+python3 -m http.server 3000
+# or
+npx serve .
+```
+
+Open http://localhost:3000.
 
 ## Architecture
 
-**Routing:** Uses Next.js App Router with a route group `(root)` for the main pages:
-- `/` — Home page (Hero, Project list, Footer) — server component fetching from Sanity
-- `/info` — About/experience page (server wrapper + client component with loading state)
-- `/projects/[slug]` — Dynamic project detail pages using `Journal` component
-- `/admin` — Embedded Sanity Studio for content management
+**Entry point:** `index.html`
+- Preloads Google Fonts (Inter Tight, JetBrains Mono, Fraunces)
+- Inline splash screen: canvas animation that draws a constellation shaped like a capital "E", with pulses animating along its edges
+- Loads React 18, ReactDOM 18, and Babel Standalone from unpkg
+- Script order at bottom: `src/data.js` → `src/tools.jsx` → `src/bg_particles.jsx` → `src/app.jsx`
+- JSX files are served as `type="text/babel"` and compiled in-browser — no bundler
 
-**Data:** All content is managed via **Sanity CMS**:
-- `sanity/schemas/` — Schema definitions (project, siteSettings)
-- `sanity/queries.ts` — GROQ queries
-- `sanity/fetch.ts` — Fetch functions with ISR (60s revalidation) and fallback defaults
-- `sanity/types.ts` — TypeScript interfaces
-- `sanity/client.ts` — Sanity client configuration
-- `sanity/image.ts` — `urlFor()` helper for Sanity image URLs
+**Source files (`src/`):**
+- `app.jsx` — main app. Components for rotating phrases, Seoul clock, typing indicator, resume sections
+- `tools.jsx` — agent-style UI tools that query the CV data
+- `bg_particles.jsx` — animated background particles
+- `data.js` — all CV content. Attached to `window.PORTFOLIO_DATA`. This is the single source of truth for person info, experience, links, languages, etc. Edit this file to update resume content
+- `styles.css` — all styling. No Tailwind, no preprocessor
 
-**Images:** Project images are stored in Sanity CMS. Static assets (noise.png, loader.svg, fonts) remain in `public/`. The `urlFor()` helper from `sanity/image.ts` generates CDN URLs from Sanity image references.
+**Design tokens:** `index.html` has a `window.__TWEAKS` block between `EDITMODE-BEGIN`/`EDITMODE-END` markers for accent color, density, and hero style — intended to be rewritten by a host/editor.
 
-**Fonts:** Neue Montreal loaded as local font files from `public/fonts/`, plus Gloock from Google Fonts (imported in `globals.css`).
+**Screenshots:** `screenshots/` holds design iteration references — not shipped to the page.
 
-**Styling:** Tailwind with custom colors (`def`, `dark_grey`, `whiteAlt`, `grayAlt`, `exoticBlue`, etc.), custom animations (`bounce-color`, `slideUp`), and a `glass` CSS class for glassmorphism effects. Uses `@designbycode/tailwindcss-text-shadow` plugin. Gradient hover effects use CSS custom properties (`--gradient-start`, `--gradient-end`) via the `.grad` class.
+## Deployment
 
-**Analytics:** Vercel Analytics integrated in root layout.
+Vercel, static. `vercel.json` sets `framework: null` and disables build/install commands so the repo root is served directly. No `package.json` — if one is added in the future, Vercel will try to detect a framework; keep it explicit.
 
-**CMS:** Sanity Studio is embedded at `/admin` via `next-sanity`. Content types:
-- `project` — Portfolio project entries with card fields, detail fields, and explanation sections
-- `siteSettings` — Singleton for personal info, hero text, links, skills, about sections, and experience
+## Content updates
+
+To update the resume, edit `src/data.js`. No build required — reload the page. `?v=` query strings in `index.html` on each `src/*` reference act as cache busters; bump them if pushing a change and seeing stale CDN caching.

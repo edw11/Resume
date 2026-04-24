@@ -26,6 +26,7 @@ function BgParticles() {
     let shoots = [];
     let raf = 0;
     let last = performance.now();
+    let prevW = 0;
 
     const getAccent = () => {
       const v = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
@@ -41,7 +42,13 @@ function BgParticles() {
       canvas.style.width = w + 'px';
       canvas.style.height = h + 'px';
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      seed();
+      // Only re-seed on width change. iOS URL-bar toggles constantly shift
+      // innerHeight by 60-100px as the user scrolls — re-seeding on every
+      // such event made the network visibly "wobble".
+      if (Math.abs(w - prevW) > 4) {
+        prevW = w;
+        seed();
+      }
     }
 
     function seed() {
@@ -52,16 +59,19 @@ function BgParticles() {
       for (let i = 0; i < count; i++) {
         const x = Math.random() * w;
         const y = Math.random() * h;
+        // On touch devices: zero velocity + driftRadius so nodes are fully
+        // static. Prevents any perceived motion / "interaction" as the user
+        // scrolls or holds the screen.
         nodes.push({
           x, y,
           homeX: x, homeY: y,
-          vx: (Math.random() - 0.5) * 0.15,
-          vy: (Math.random() - 0.5) * 0.15,
+          vx: isTouch ? 0 : (Math.random() - 0.5) * 0.15,
+          vy: isTouch ? 0 : (Math.random() - 0.5) * 0.15,
           r: 1.1 + Math.random() * 1.4,
           phase: Math.random() * Math.PI * 2,
           driftPhase: Math.random() * Math.PI * 2,
-          driftRate: 0.002 + Math.random() * 0.003,
-          driftRadius: 15 + Math.random() * 35,
+          driftRate: isTouch ? 0 : 0.002 + Math.random() * 0.003,
+          driftRadius: isTouch ? 0 : 15 + Math.random() * 35,
         });
       }
 

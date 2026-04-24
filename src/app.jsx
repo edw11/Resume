@@ -250,7 +250,11 @@ function App() {
       </svg><header className="top">
         <div className="top-inner">
           <div className="top-l">
-            <div className="brand-name">Edward Cahyadi</div>
+            <a
+              href="/"
+              className="brand-name"
+              onClick={(e) => { e.preventDefault(); window.location.reload(); }}
+            >Edward Cahyadi</a>
           </div>
           <div className="top-c">
             <SeoulClock />

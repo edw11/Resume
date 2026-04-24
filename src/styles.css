@@ -1546,26 +1546,40 @@ body {
   .msg.agent .msg-body { font-size: 15px; line-height: 1.6; }
   .msg.user .msg-body { font-size: 13px; }
 
-  /* Composer: stays within safe-area, scrollable suggestions row */
+  /* Composer: solid bg so chat history doesn't bleed through the
+     suggestions area. A short fade zone sits above via ::before. */
   .composer-wrap {
     padding: 14px 20px calc(20px + env(safe-area-inset-bottom, 0px));
     position: sticky;
     bottom: 0;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      var(--bg) 22%,
-      var(--bg) 100%
-    );
+    background: var(--bg);
     z-index: 5;
   }
-  /* Suggestions: wrap within composer width instead of bleeding edge-to-edge */
+  .composer-wrap::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -20px;
+    height: 20px;
+    background: linear-gradient(to bottom, transparent, var(--bg));
+    pointer-events: none;
+  }
+
+  /* Suggestions: 2-col grid aligned with composer, 5th item (contact)
+     spans full width as a primary CTA. Predictable tap targets. */
   .suggestions {
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 6px;
     margin-bottom: 10px;
   }
-  .sug { font-size: 12px; padding: 6px 11px; }
+  .sug {
+    font-size: 12px;
+    padding: 9px 10px;
+    text-align: center;
+  }
+  .sug:last-child { grid-column: 1 / -1; }
 
   .composer { padding: 12px 14px; border-radius: 12px; }
   .composer-input { font-size: 16px; /* prevent iOS zoom */ }

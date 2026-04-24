@@ -216,7 +216,7 @@ function App() {
         toolResult = res;
         replyText = res;
       } catch (err) {
-        toolResult = "I can't reach the live model right now — try one of the starter questions on the left.";
+        toolResult = "I can't reach the live model right now — try one of the starter questions.";
         replyText = toolResult;
       }
     } else {

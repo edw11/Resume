@@ -22,6 +22,7 @@
 
 * { box-sizing: border-box; }
 html, body, #root { margin: 0; height: 100%; }
+html, body { overscroll-behavior: none; }
 body {
   font-family: var(--sans);
   background-color: var(--bg);
@@ -1498,9 +1499,9 @@ body {
     grid-template-rows: auto 1fr;
   }
 
-  /* Top bar: tighter padding, smaller brand, links stay right */
-  .top { padding: 14px 18px 12px; }
-  .top::after { left: 18px; right: 18px; }
+  /* Top bar: align horizontal padding with composer/messages (20px) */
+  .top { padding: 14px 20px 12px; }
+  .top::after { left: 20px; right: 20px; }
   .top-inner,
   .app:not(.panel-open) .top-inner {
     grid-template-columns: 1fr auto;
@@ -1558,19 +1559,13 @@ body {
     );
     z-index: 5;
   }
+  /* Suggestions: wrap within composer width instead of bleeding edge-to-edge */
   .suggestions {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-    margin-left: -20px;
-    margin-right: -20px;
-    padding: 0 20px 2px;
-    mask-image: linear-gradient(to right, transparent, black 12px, black calc(100% - 12px), transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 12px, black calc(100% - 12px), transparent);
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 10px;
   }
-  .suggestions::-webkit-scrollbar { display: none; }
-  .sug { flex-shrink: 0; font-size: 12px; padding: 7px 13px; }
+  .sug { font-size: 12px; padding: 6px 11px; }
 
   .composer { padding: 12px 14px; border-radius: 12px; }
   .composer-input { font-size: 16px; /* prevent iOS zoom */ }
@@ -1676,8 +1671,8 @@ body {
 
 /* ── Very small (≤380px): even tighter ────────────────────────────── */
 @media (max-width: 380px) {
-  .top { padding: 12px 14px 10px; }
-  .top::after { left: 14px; right: 14px; }
+  .top { padding: 12px 16px 10px; }
+  .top::after { left: 16px; right: 16px; }
   .top-r { gap: 10px; }
   .top-link { font-size: 11px; }
   .brand-name { font-size: 14px; }
@@ -1698,7 +1693,6 @@ body {
     padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
   }
   .app:not(.panel-open) .messages { padding-left: 16px; padding-right: 16px; }
-  .suggestions { margin-left: -16px; margin-right: -16px; padding: 0 16px 2px; }
 
   .panel-body { padding: 52px 16px calc(24px + env(safe-area-inset-bottom, 0px)); }
   .pcard-metrics { grid-template-columns: 1fr 1fr; }

@@ -1,38 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Edward Cahyadi — Resume
 
-Edward Resume
+Personal resume / portfolio. Self-contained static site: one HTML file, React via CDN, Babel Standalone for inline JSX (no build step).
 
-## Getting Started
+## Local preview
 
-First, run the development server:
+Any static file server works. Examples:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Python
+python3 -m http.server 3000
+
+# Node (no install)
+npx serve .
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `index.html` — entry point, splash animation, script loaders
+- `src/app.jsx` — main app component
+- `src/tools.jsx` — interactive UI tools (agent-style queries over CV data)
+- `src/bg_particles.jsx` — background particle animation
+- `src/data.js` — CV content (person, experience, projects, skills)
+- `src/styles.css` — all styling
+- `screenshots/` — design iteration reference images
 
-## Learn More
+## Deploy
 
-To learn more about Next.js, take a look at the following resources:
+Deployed on Vercel as a static site. `vercel.json` explicitly disables framework detection so the repo root is served as-is.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+If the Vercel project was previously configured for Next.js, reset the **Framework Preset** to **Other** in the project's dashboard settings — `vercel.json` overrides this on new deploys, but an existing cached build command may need clearing.

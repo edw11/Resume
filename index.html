@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en" data-density="compact" data-hero="full" style="--accent: oklch(0.76 0.17 305);">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Edward Cahyadi — edward.agent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="src/styles.css?v=46">
+
+<script>
+  // Tweaks defaults — host rewrites this block on disk
+  window.__TWEAKS = /*EDITMODE-BEGIN*/{
+    "accent": "oklch(0.82 0.12 210)",
+    "density": "compact",
+    "hero": "full"
+  }/*EDITMODE-END*/;
+</script>
+
+<style>
+  /* First-paint splash — galaxy constellation that assembles into a network. */
+  html, body { margin: 0; background: #000; }
+  #splash {
+    position: fixed; inset: 0; z-index: 99999;
+    background: #000;
+    overflow: hidden;
+    transition: opacity 0.7s ease;
+  }
+  #splash.gone { opacity: 0; pointer-events: none; }
+  #splash-canvas {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+  }
+  #splash-label {
+    position: absolute;
+    left: 50%; bottom: 18%;
+    transform: translateX(-50%);
+    color: rgba(230, 235, 250, 0.55);
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-align: center;
+    opacity: 0;
+    animation: splashLabelIn 0.9s ease 0.4s forwards;
+  }
+  #splash-label .sep { color: rgba(230,235,250,0.18); margin: 0 10px; }
+  #splash-label .dots i {
+    display: inline-block;
+    width: 3px; height: 3px; border-radius: 50%;
+    background: currentColor;
+    opacity: 0.35;
+    margin-left: 4px;
+    animation: splashDot 1.3s ease-in-out infinite;
+  }
+  #splash-label .dots i:nth-child(2) { animation-delay: 0.2s; }
+  #splash-label .dots i:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes splashLabelIn {
+    from { opacity: 0; transform: translateX(-50%) translateY(8px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+  }
+  @keyframes splashDot {
+    0%, 100% { opacity: 0.25; transform: translateY(0); }
+    50%      { opacity: 1;    transform: translateY(-2px); }
+  }
+</style>
+
+<script>
+  // Splash animation — runs immediately, no framework deps.
+  // Organic constellation: scattered nodes connect to their nearest neighbors
+  // so the graph feels discovered, not drafted.
+  window.__splashStart = performance.now();
+  window.__runSplash = function(){
+    const canvas = document.getElementById('splash-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const dpr = window.devicePixelRatio || 1;
+    let w = 0, h = 0;
+    const ACCENT = 'oklch(0.82 0.12 210)';
+
+    function resize() {
+      w = window.innerWidth;
+      h = window.innerHeight;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.width = w + 'px';
+      canvas.style.height = h + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    // ── Nodes placed along the skeleton of a capital "E" ────────────────
+    // The geometry is 4 line segments: one vertical spine + 3 horizontal
+    // bars (top, middle, bottom). Nodes are distributed along the arcs
+    // with small jitter so it reads as hand-drawn rather than pixel-art.
+    const cx = w / 2, cy = h / 2;
+    const EH = Math.min(w, h) * 0.42;   // total E height
+    const EW = EH * 0.58;               // top/bottom bar length
+    const MW = EW * 0.60;               // middle bar length (classic shorter)
+    const spineX = cx - EW / 2;
+    const topY = cy - EH / 2;
+    const midY = cy;
+    const botY = cy + EH / 2;
+
+    // deterministic-ish seed so the shape has consistent structure
+    let seed = Math.floor(Math.random() * 1e9);
+    const rand = () => {
+      seed = (seed * 9301 + 49297) % 233280;
+      return seed / 233280;
+    };
+
+    // Jitter scale — keeps the E readable but organic
+    const JITTER = Math.min(w, h) * 0.010;
+
+    // Corner points (spine endpoints + bar ends) that the edge graph
+    // naturally snaps to. We'll place a "bright star" at the top-left
+    // corner (the canonical starting point when drawing an E).
+    const nodes = [];
+    function addNode(x, y, opts = {}) {
+      const jx = (rand() - 0.5) * JITTER * (opts.jitter ?? 1.6);
+      const jy = (rand() - 0.5) * JITTER * (opts.jitter ?? 1.6);
+      // appearance timing: earlier for bright/corner nodes, later for
+      // interior bar nodes — gives an inside-out-along-the-E reveal
+      const appearAt = opts.appearAt ?? (200 + rand() * 600);
+      nodes.push({
+        x: x + jx,
+        y: y + jy,
+        r: opts.r ?? (1.6 + rand() * 0.7),
+        bright: !!opts.bright,
+        appearAt,
+      });
+    }
+
+    // Spine — 7 nodes top to bottom
+    const SPINE_N = 7;
+    for (let i = 0; i < SPINE_N; i++) {
+      const t = i / (SPINE_N - 1);
+      addNode(spineX, topY + t * EH, {
+        r: (i === 0 || i === SPINE_N - 1) ? 2.4 : 1.6 + rand() * 0.6,
+        bright: i === 0,  // top-left is the anchor
+        appearAt: 80 + t * 420,
+      });
+    }
+
+    // Top bar — 5 nodes left to right (skip 1st, it's the spine top)
+    const BAR_N = 5;
+    for (let i = 1; i < BAR_N; i++) {
+      const t = i / (BAR_N - 1);
+      addNode(spineX + t * EW, topY, {
+        r: i === BAR_N - 1 ? 2.2 : 1.6 + rand() * 0.6,
+        appearAt: 320 + t * 500,
+      });
+    }
+
+    // Middle bar — 4 nodes, shorter
+    const MID_N = 4;
+    for (let i = 1; i < MID_N; i++) {
+      const t = i / (MID_N - 1);
+      addNode(spineX + t * MW, midY, {
+        r: 1.6 + rand() * 0.5,
+        appearAt: 700 + t * 420,
+      });
+    }
+
+    // Bottom bar — 5 nodes (skip 1st = spine bottom)
+    for (let i = 1; i < BAR_N; i++) {
+      const t = i / (BAR_N - 1);
+      addNode(spineX + t * EW, botY, {
+        r: i === BAR_N - 1 ? 2.2 : 1.6 + rand() * 0.6,
+        appearAt: 900 + t * 520,
+      });
+    }
+
+    // Explicit bright anchor on the top-left (already marked above; ensure
+    // it's visually prominent and comes first).
+    nodes[0].r = 3.0; nodes[0].bright = true; nodes[0].appearAt = 0;
+
+    // ── Edges: each node connects to its 2 nearest neighbors (limited) ──
+    // Distance cutoff scales with the E's dimensions so bars wire up to
+    // the spine but opposite-bar nodes don't get spurious cross-links.
+    const MAX_EDGE = Math.max(EH / (SPINE_N - 1), EW / (BAR_N - 1)) * 1.4;
+    const edges = [];
+    const edgeKey = new Set();
+    for (let i = 0; i < nodes.length; i++) {
+      const a = nodes[i];
+      const cand = [];
+      for (let j = 0; j < nodes.length; j++) {
+        if (i === j) continue;
+        const b = nodes[j];
+        const d = Math.hypot(a.x - b.x, a.y - b.y);
+        if (d > MAX_EDGE) continue;
+        cand.push([d, j]);
+      }
+      cand.sort((x, y) => x[0] - y[0]);
+      const take = Math.min(2, cand.length);
+      for (let k = 0; k < take; k++) {
+        const j = cand[k][1];
+        const key = i < j ? i + '-' + j : j + '-' + i;
+        if (edgeKey.has(key)) continue;
+        edgeKey.add(key);
+        edges.push({
+          a: i, b: j,
+          startAt: Math.max(nodes[i].appearAt, nodes[j].appearAt) + 180,
+          dur: 520,
+        });
+      }
+    }
+
+    // ── Background star field (fewer, softer) ───────────────────────────
+    const stars = [];
+    const sCount = Math.round(w * h * 0.00045);
+    for (let i = 0; i < sCount; i++) {
+      stars.push({
+        x: rand() * w,
+        y: rand() * h,
+        r: rand() < 0.08 ? 1.1 : 0.35 + rand() * 0.5,
+        base: 0.10 + rand() * 0.35,
+        twinkleRate: 0.5 + rand() * 1.6,
+        twinklePhase: rand() * Math.PI * 2,
+        appearAt: rand() * 1000,
+      });
+    }
+
+    const pulses = [];
+    function maybeSpawnPulse(t) {
+      if (t < 2200) return;
+      if (Math.random() > 0.05 || edges.length === 0) return;
+      const e = edges[Math.floor(Math.random() * edges.length)];
+      pulses.push({ edge: e, t: 0, speed: 0.8 + Math.random() * 0.7 });
+    }
+
+    let last = performance.now();
+    let raf = 0;
+    let done = false;
+
+    function loop(now) {
+      const elapsed = now - window.__splashStart;
+      const dt = Math.min(40, now - last);
+      last = now;
+      ctx.clearRect(0, 0, w, h);
+
+      // faint central glow, drifts subtly
+      const driftX = Math.sin(elapsed * 0.0004) * 20;
+      const driftY = Math.cos(elapsed * 0.0003) * 14;
+      const gx = cx + driftX, gy = cy + driftY;
+      const glowR = Math.min(w, h) * 0.5;
+      const glow = ctx.createRadialGradient(gx, gy, 0, gx, gy, glowR);
+      glow.addColorStop(0, `color-mix(in oklch, ${ACCENT} 7%, transparent)`);
+      glow.addColorStop(0.5, `color-mix(in oklch, ${ACCENT} 2%, transparent)`);
+      glow.addColorStop(1, 'transparent');
+      ctx.fillStyle = glow;
+      ctx.beginPath(); ctx.arc(gx, gy, glowR, 0, Math.PI * 2); ctx.fill();
+
+      // star field
+      for (const s of stars) {
+        if (elapsed < s.appearAt) continue;
+        const age = elapsed - s.appearAt;
+        const intro = Math.min(1, age / 700);
+        s.twinklePhase += s.twinkleRate * (dt / 1000);
+        const tw = 0.55 + Math.sin(s.twinklePhase) * 0.45;
+        const a = s.base * tw * intro;
+        ctx.fillStyle = `rgba(230, 235, 250, ${a})`;
+        ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill();
+      }
+
+      // edges (drawing on)
+      for (const e of edges) {
+        const age = elapsed - e.startAt;
+        if (age < 0) continue;
+        const p = Math.min(1, age / e.dur);
+        const ease = 1 - Math.pow(1 - p, 3);
+        const a = nodes[e.a], b = nodes[e.b];
+        const ex = a.x + (b.x - a.x) * ease;
+        const ey = a.y + (b.y - a.y) * ease;
+        ctx.strokeStyle = `color-mix(in oklch, ${ACCENT} 32%, transparent)`;
+        ctx.lineWidth = 0.8;
+        ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(ex, ey); ctx.stroke();
+      }
+
+      // nodes
+      for (const n of nodes) {
+        if (elapsed < n.appearAt) continue;
+        const age = elapsed - n.appearAt;
+        const intro = Math.min(1, age / 600);
+        const breath = 0.8 + Math.sin(elapsed * 0.002 + n.x * 0.01) * 0.2;
+        const rNow = n.r;
+        // halo
+        const haloR = rNow * (n.bright ? 7 : 4.5);
+        const hg = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, haloR);
+        const haloA = (n.bright ? 0.55 : 0.3) * intro * breath;
+        hg.addColorStop(0, `color-mix(in oklch, ${ACCENT} ${Math.round(haloA * 100)}%, transparent)`);
+        hg.addColorStop(1, `color-mix(in oklch, ${ACCENT} 0%, transparent)`);
+        ctx.fillStyle = hg;
+        ctx.beginPath(); ctx.arc(n.x, n.y, haloR, 0, Math.PI * 2); ctx.fill();
+        // core
+        ctx.fillStyle = n.bright
+          ? `rgba(240, 245, 255, ${intro})`
+          : `rgba(220, 228, 245, ${0.75 * intro})`;
+        ctx.beginPath(); ctx.arc(n.x, n.y, rNow, 0, Math.PI * 2); ctx.fill();
+        // cross-glint on brightest
+        if (n.bright && intro > 0.6) {
+          ctx.strokeStyle = `rgba(240, 245, 255, ${intro * 0.45})`;
+          ctx.lineWidth = 0.6;
+          ctx.beginPath();
+          ctx.moveTo(n.x - rNow * 4, n.y); ctx.lineTo(n.x + rNow * 4, n.y);
+          ctx.moveTo(n.x, n.y - rNow * 4); ctx.lineTo(n.x, n.y + rNow * 4);
+          ctx.stroke();
+        }
+      }
+
+      // pulses
+      maybeSpawnPulse(elapsed);
+      for (const p of pulses) {
+        p.t += p.speed * (dt / 1000);
+        if (p.t >= 1) continue;
+        const a = nodes[p.edge.a], b = nodes[p.edge.b];
+        const px = a.x + (b.x - a.x) * p.t;
+        const py = a.y + (b.y - a.y) * p.t;
+        ctx.globalAlpha = 0.9 * (1 - Math.abs(p.t - 0.5) * 2);
+        const g = ctx.createRadialGradient(px, py, 0, px, py, 10);
+        g.addColorStop(0, `color-mix(in oklch, ${ACCENT} 80%, transparent)`);
+        g.addColorStop(1, `color-mix(in oklch, ${ACCENT} 0%, transparent)`);
+        ctx.fillStyle = g;
+        ctx.beginPath(); ctx.arc(px, py, 10, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = ACCENT;
+        ctx.beginPath(); ctx.arc(px, py, 1.8, 0, Math.PI * 2); ctx.fill();
+        ctx.globalAlpha = 1;
+      }
+      for (let i = pulses.length - 1; i >= 0; i--) {
+        if (pulses[i].t >= 1) pulses.splice(i, 1);
+      }
+
+      if (done) return;
+      raf = requestAnimationFrame(loop);
+    }
+    raf = requestAnimationFrame(loop);
+
+    window.__splashStop = function(){
+      done = true;
+      cancelAnimationFrame(raf);
+      window.removeEventListener('resize', resize);
+    };
+  };
+</script>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div id="splash" aria-hidden="true">
+    <canvas id="splash-canvas"></canvas>
+    <div id="splash-label">
+      <span>assembling agent network</span>
+      <span class="sep">·</span>
+      <span class="dots"><i></i><i></i><i></i></span>
+    </div>
+  </div>
+  <script>window.__runSplash && window.__runSplash();</script>
+
+  <div id="root"></div>
+
+  <script src="src/data.js?v=2"></script>
+  <script type="text/babel" src="src/tools.jsx?v=43" data-plugins="transform-react-jsx-source"></script>
+  <script type="text/babel" src="src/bg_particles.jsx?v=14" data-plugins="transform-react-jsx-source"></script>
+  <script type="text/babel" src="src/app.jsx?v=43" data-plugins="transform-react-jsx-source"></script>
+</body>
+</html>
